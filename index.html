@@ -3,10 +3,8 @@
 <head>
   <meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, viewport-fit=cover"
-  >
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, viewport-fit=cover">
 
   <meta name="theme-color" content="#f7b7c7">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -18,8 +16,7 @@
   <style>
     :root {
       --bg: #fff8fa;
-      --card: rgba(255, 255, 255, 0.88);
-      --card-solid: #ffffff;
+      --card: rgba(255,255,255,.90);
       --text: #4a3039;
       --muted: #9b7781;
 
@@ -33,12 +30,10 @@
       --peach: #f2b47d;
       --peach-light: #fff0df;
 
-      --border: rgba(205, 126, 148, 0.13);
+      --border: rgba(205,126,148,.13);
 
       --shadow:
-        0 12px 32px rgba(190, 108, 132, 0.10);
-
-      --radius: 24px;
+        0 12px 32px rgba(190,108,132,.10);
     }
 
     * {
@@ -71,12 +66,12 @@
       background:
         radial-gradient(
           circle at 0% 0%,
-          rgba(247, 183, 199, .30),
+          rgba(247,183,199,.30),
           transparent 34%
         ),
         radial-gradient(
           circle at 100% 25%,
-          rgba(255, 221, 230, .55),
+          rgba(255,221,230,.55),
           transparent 30%
         ),
         linear-gradient(
@@ -85,33 +80,29 @@
           #fffaf9 100%
         );
 
-      transition:
-        background .3s ease,
-        color .3s ease;
-
       overflow-x: hidden;
+      transition: background .3s ease, color .3s ease;
     }
 
     body.dark {
       --bg: #1e171b;
-      --card: rgba(45, 33, 39, .94);
-      --card-solid: #2d2127;
+      --card: rgba(45,33,39,.94);
       --text: #fff0f4;
       --muted: #c1a8b0;
 
       --pink: #dc8fa5;
       --pink-dark: #cf7f98;
-      --pink-light: rgba(220, 143, 165, .15);
+      --pink-light: rgba(220,143,165,.15);
 
-      --border: rgba(255, 255, 255, .07);
+      --border: rgba(255,255,255,.07);
 
       --shadow:
-        0 12px 32px rgba(0, 0, 0, .18);
+        0 12px 32px rgba(0,0,0,.18);
 
       background:
         radial-gradient(
           circle at 0% 0%,
-          rgba(220, 143, 165, .16),
+          rgba(220,143,165,.16),
           transparent 35%
         ),
         #1e171b;
@@ -141,13 +132,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
 
       padding: 8px 2px 17px;
-    }
-
-    .hello {
-      min-width: 0;
     }
 
     .hello-small {
@@ -159,16 +145,17 @@
 
     .hello-title {
       margin: 0;
+
       font-size: 25px;
       line-height: 1.1;
       font-weight: 850;
+
       letter-spacing: -.7px;
     }
 
     .theme-btn {
       width: 44px;
       height: 44px;
-      flex: 0 0 44px;
 
       display: grid;
       place-items: center;
@@ -190,16 +177,12 @@
       text-align: center;
 
       padding: 22px 15px;
-
       margin-bottom: 15px;
 
-      border:
-        1px solid var(--border);
-
+      border: 1px solid var(--border);
       border-radius: 27px;
 
       background: var(--card);
-
       box-shadow: var(--shadow);
 
       backdrop-filter: blur(18px);
@@ -207,8 +190,9 @@
     }
 
     .clock {
-      font-size: clamp(43px, 14vw, 67px);
+      font-size: clamp(43px,14vw,67px);
       line-height: 1;
+
       font-weight: 850;
       letter-spacing: 1px;
 
@@ -228,6 +212,7 @@
       margin-top: 5px;
 
       color: var(--muted);
+
       font-size: 11px;
       font-weight: 600;
     }
@@ -253,7 +238,7 @@
         );
 
       box-shadow:
-        0 18px 40px rgba(213, 121, 145, .20);
+        0 18px 40px rgba(213,121,145,.20);
     }
 
     .welcome::after {
@@ -279,8 +264,8 @@
 
       font-size: 12px;
       font-weight: 650;
-      opacity: .88;
 
+      opacity: .88;
       margin-bottom: 6px;
     }
 
@@ -292,6 +277,7 @@
 
       font-size: 25px;
       line-height: 1.15;
+
       letter-spacing: -.5px;
     }
 
@@ -334,6 +320,7 @@
     .health-buttons {
       display: grid;
       grid-template-columns: 1fr 1fr;
+
       gap: 9px;
     }
 
@@ -344,7 +331,6 @@
       border-radius: 14px;
 
       background: rgba(255,255,255,.16);
-
       color: white;
 
       cursor: pointer;
@@ -360,18 +346,21 @@
 
     .health-emoji {
       display: block;
+
       font-size: 20px;
       margin-bottom: 2px;
     }
 
     .health-label {
       display: block;
+
       font-size: 12px;
       font-weight: 800;
     }
 
     .health-sub {
       display: block;
+
       margin-top: 2px;
 
       font-size: 9px;
@@ -383,7 +372,7 @@
       color: var(--pink-dark);
 
       box-shadow:
-        0 7px 18px rgba(120, 50, 70, .10);
+        0 7px 18px rgba(120,50,70,.10);
     }
 
     /* SECTION */
@@ -392,6 +381,7 @@
       display: flex;
       justify-content: space-between;
       align-items: end;
+
       gap: 10px;
 
       margin: 22px 3px 11px;
@@ -400,13 +390,16 @@
     .section-title {
       font-size: 17px;
       font-weight: 850;
+
       letter-spacing: -.25px;
     }
 
     .section-date {
       color: var(--muted);
+
       font-size: 10px;
       font-weight: 650;
+
       text-align: right;
     }
 
@@ -415,25 +408,30 @@
     .medicines {
       display: flex;
       flex-direction: column;
+
       gap: 11px;
     }
 
     .medicine {
       position: relative;
 
-      display: flex;
-      align-items: flex-start;
+      display: grid;
+
+      grid-template-columns:
+        47px
+        minmax(0,1fr)
+        auto;
+
+      align-items: center;
+
       gap: 12px;
 
       padding: 14px;
 
-      border:
-        1px solid var(--border);
-
+      border: 1px solid var(--border);
       border-radius: 21px;
 
       background: var(--card);
-
       box-shadow: var(--shadow);
 
       min-width: 0;
@@ -443,13 +441,13 @@
     }
 
     .medicine.done-card {
-      border-color: rgba(114, 189, 152, .25);
+      border-color:
+        rgba(114,189,152,.25);
     }
 
     .med-icon {
       width: 47px;
       height: 47px;
-      flex: 0 0 47px;
 
       display: grid;
       place-items: center;
@@ -472,7 +470,6 @@
     }
 
     .med-content {
-      flex: 1;
       min-width: 0;
     }
 
@@ -481,6 +478,7 @@
 
       font-size: 15px;
       line-height: 1.2;
+
       font-weight: 850;
     }
 
@@ -489,12 +487,16 @@
 
       font-size: 11px;
       line-height: 1.45;
+
       font-weight: 550;
     }
+
+    /* DOSE */
 
     .dose-list {
       display: flex;
       flex-direction: column;
+
       gap: 7px;
 
       margin-top: 10px;
@@ -502,8 +504,10 @@
 
     .dose {
       display: flex;
+
       align-items: center;
       justify-content: space-between;
+
       gap: 8px;
 
       padding: 8px;
@@ -520,21 +524,30 @@
       font-weight: 750;
     }
 
+    /* BUTTONS */
+
     .take {
-      min-width: 72px;
-      min-height: 36px;
+      width: 82px;
+      min-width: 82px;
+      height: 38px;
+
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 0 7px;
 
       border: 0;
-      border-radius: 10px;
-
-      padding: 6px 9px;
+      border-radius: 11px;
 
       background: var(--pink);
-
       color: white;
 
       font-size: 10px;
       font-weight: 850;
+
+      white-space: nowrap;
 
       cursor: pointer;
 
@@ -552,8 +565,7 @@
     }
 
     .single-take {
-      align-self: center;
-      flex: 0 0 auto;
+      justify-self: end;
     }
 
     /* PROGRESS */
@@ -562,18 +574,16 @@
       margin-top: 14px;
       padding: 17px;
 
-      border:
-        1px solid var(--border);
-
+      border: 1px solid var(--border);
       border-radius: 21px;
 
       background: var(--card);
-
       box-shadow: var(--shadow);
     }
 
     .progress-head {
       display: flex;
+
       justify-content: space-between;
       align-items: center;
 
@@ -594,6 +604,7 @@
 
     .hearts-progress {
       display: flex;
+
       gap: 5px;
 
       min-height: 25px;
@@ -603,6 +614,7 @@
 
     .progress-heart {
       font-size: 21px;
+
       filter: grayscale(1);
       opacity: .28;
 
@@ -644,7 +656,6 @@
       text-align: center;
 
       color: #4d9d78;
-
       background: var(--green-light);
 
       font-size: 12px;
@@ -689,6 +700,7 @@
 
     .floating-heart {
       position: fixed;
+
       z-index: 9999;
 
       pointer-events: none;
@@ -706,8 +718,9 @@
     @keyframes floatHeart {
       0% {
         opacity: 0;
+
         transform:
-          translate3d(0, 10px, 0)
+          translate3d(0,10px,0)
           scale(.55)
           rotate(0deg);
       }
@@ -718,6 +731,7 @@
 
       100% {
         opacity: 0;
+
         transform:
           translate3d(
             var(--x),
@@ -745,23 +759,22 @@
         );
 
       transform:
-        translate(-50%, 20px);
+        translate(-50%,20px);
 
       width: max-content;
       max-width: calc(100vw - 30px);
 
-      padding:
-        11px 15px;
+      padding: 11px 15px;
 
       border-radius: 15px;
 
       background:
-        rgba(70, 43, 53, .94);
+        rgba(70,43,53,.94);
 
       color: white;
 
       box-shadow:
-        0 12px 30px rgba(50, 20, 30, .18);
+        0 12px 30px rgba(50,20,30,.18);
 
       text-align: center;
 
@@ -781,31 +794,34 @@
       opacity: 1;
 
       transform:
-        translate(-50%, 0);
+        translate(-50%,0);
     }
 
     /* SMALL IPHONES */
 
-    @media (max-width: 380px) {
-      .app {
-        padding-left: 12px;
-        padding-right: 12px;
-      }
+    @media (max-width:380px) {
 
-      .welcome {
-        padding: 20px;
+      .app {
+        padding-left: 11px;
+        padding-right: 11px;
       }
 
       .medicine {
-        padding: 12px;
+        grid-template-columns:
+          42px
+          minmax(0,1fr)
+          76px;
+
         gap: 9px;
+
+        padding: 12px;
       }
 
       .med-icon {
-        width: 43px;
-        height: 43px;
-        flex-basis: 43px;
-        font-size: 19px;
+        width: 42px;
+        height: 42px;
+
+        font-size: 18px;
       }
 
       .med-name {
@@ -816,8 +832,12 @@
         font-size: 10px;
       }
 
-      .take {
-        min-width: 68px;
+      .take,
+      .single-take {
+        width: 76px;
+        min-width: 76px;
+
+        font-size: 9.5px;
       }
     }
   </style>
@@ -828,16 +848,19 @@
   <main class="app">
 
     <!-- HEADER -->
+
     <header class="header">
 
-      <div class="hello">
+      <div>
+
         <div class="hello-small">
-          Selammm 🌸
+          Eşşek 🫏💗
         </div>
 
         <h1 class="hello-title">
           Esilaaa 💗
         </h1>
+
       </div>
 
       <button
@@ -854,6 +877,7 @@
 
 
     <!-- CLOCK -->
+
     <section class="clock-card">
 
       <div
@@ -878,6 +902,7 @@
 
 
     <!-- WELCOME -->
+
     <section class="welcome">
 
       <div class="welcome-kicker">
@@ -895,6 +920,7 @@
 
 
       <!-- HEALTH -->
+
       <div class="health">
 
         <div class="health-title">
@@ -910,8 +936,12 @@
             onclick="setHealth('good')"
           >
             <span class="health-emoji">😊</span>
-            <span class="health-label">İyiyim</span>
-            <span class="health-sub">keyfim yerinde</span>
+            <span class="health-label">
+              İyiyim
+            </span>
+            <span class="health-sub">
+              keyfim yerinde
+            </span>
           </button>
 
           <button
@@ -921,8 +951,12 @@
             onclick="setHealth('bad')"
           >
             <span class="health-emoji">🥺</span>
-            <span class="health-label">İyi değilim</span>
-            <span class="health-sub">biraz kötüyüm</span>
+            <span class="health-label">
+              İyi değilim
+            </span>
+            <span class="health-sub">
+              biraz kötüyüm
+            </span>
           </button>
 
         </div>
@@ -932,7 +966,8 @@
     </section>
 
 
-    <!-- MEDICINES -->
+    <!-- MEDICINES HEADER -->
+
     <div class="section-head">
 
       <div class="section-title">
@@ -942,16 +977,18 @@
       <div
         class="section-date"
         id="sectionDate"
-      >
-      </div>
+      ></div>
 
     </div>
 
+
+    <!-- MEDICINES -->
 
     <section class="medicines">
 
 
       <!-- BETASERC -->
+
       <article
         class="medicine"
         id="betasercCard"
@@ -976,7 +1013,6 @@
 
           <div class="dose-list">
 
-            <!-- SABAH -->
             <div class="dose">
 
               <div class="dose-info">
@@ -987,7 +1023,12 @@
                 class="take"
                 id="betasercMorning"
                 type="button"
-                onclick="toggleDose('betasercMorning', this)"
+                onclick="
+                  toggleDose(
+                    'betasercMorning',
+                    this
+                  )
+                "
               >
                 Aldım 💗
               </button>
@@ -995,7 +1036,6 @@
             </div>
 
 
-            <!-- AKŞAM -->
             <div
               class="dose"
               id="eveningDose"
@@ -1010,7 +1050,12 @@
                 class="take"
                 id="betasercEvening"
                 type="button"
-                onclick="toggleDose('betasercEvening', this)"
+                onclick="
+                  toggleDose(
+                    'betasercEvening',
+                    this
+                  )
+                "
               >
                 Aldım 💗
               </button>
@@ -1025,6 +1070,7 @@
 
 
       <!-- CITOLES -->
+
       <article
         class="medicine"
         id="citolesCard"
@@ -1050,7 +1096,12 @@
           class="take single-take"
           id="citoles"
           type="button"
-          onclick="toggleMedicine('citoles', this)"
+          onclick="
+            toggleMedicine(
+              'citoles',
+              this
+            )
+          "
         >
           Aldım 💗
         </button>
@@ -1059,6 +1110,7 @@
 
 
       <!-- B12 -->
+
       <article
         class="medicine"
         id="b12Card"
@@ -1084,7 +1136,12 @@
           class="take single-take"
           id="b12"
           type="button"
-          onclick="toggleMedicine('b12', this)"
+          onclick="
+            toggleMedicine(
+              'b12',
+              this
+            )
+          "
         >
           Aldım 💗
         </button>
@@ -1095,6 +1152,7 @@
 
 
     <!-- PROGRESS -->
+
     <section class="progress-card">
 
       <div class="progress-head">
@@ -1115,14 +1173,14 @@
       <div
         class="hearts-progress"
         id="heartProgress"
-      >
-      </div>
+      ></div>
 
       <div
         class="complete"
         id="complete"
       >
-        Bugünlük tamamdır Esilaaa! 🥹💗<br>
+        Bugünlük tamamdır Esilaaa! 🥹💗
+        <br>
         Kendine iyi baktın, aferin sana.
       </div>
 
@@ -1137,6 +1195,7 @@
 
 
   <!-- TOAST -->
+
   <div
     class="toast"
     id="toast"
@@ -1145,9 +1204,9 @@
 
   <script>
 
-    /* =========================================
-       TÜRKİYE TARİH ANAHTARI
-       ========================================= */
+    /* ================================
+       TÜRKİYE TARİHİ
+       ================================ */
 
     function turkeyDateKey() {
 
@@ -1156,6 +1215,7 @@
           "en-CA",
           {
             timeZone: "Europe/Istanbul",
+
             year: "numeric",
             month: "2-digit",
             day: "2-digit"
@@ -1165,9 +1225,11 @@
       const values = {};
 
       parts.forEach(part => {
+
         if (part.type !== "literal") {
           values[part.type] = part.value;
         }
+
       });
 
       return (
@@ -1180,69 +1242,98 @@
     }
 
 
-    /* =========================================
-       BUGÜNÜN KAYIT ANAHTARI
-       ========================================= */
+    /* ================================
+       GÜNLÜK KAYIT
+       ================================ */
 
     function storageKey() {
-      return "esila_" + turkeyDateKey();
+
+      return "esila_" +
+             turkeyDateKey();
+
     }
 
 
     function defaultData() {
+
       return {
+
         health: "good",
+
         doses: {
+
           betasercMorning: false,
           betasercEvening: false,
+
           citoles: false,
           b12: false
+
         }
+
       };
+
     }
 
 
     function getData() {
 
       const saved =
-        localStorage.getItem(storageKey());
+        localStorage.getItem(
+          storageKey()
+        );
 
       if (!saved) {
         return defaultData();
       }
 
       try {
-        const data = JSON.parse(saved);
+
+        const data =
+          JSON.parse(saved);
 
         return {
-          health: data.health || "good",
+
+          health:
+            data.health || "good",
 
           doses: {
+
             ...defaultData().doses,
+
             ...(data.doses || {})
+
           }
+
         };
 
       } catch {
+
         return defaultData();
+
       }
+
     }
 
 
     function saveData() {
+
       localStorage.setItem(
+
         storageKey(),
+
         JSON.stringify(data)
+
       );
+
     }
 
 
     let data = getData();
 
 
-    /* =========================================
-       SAAT VE TARİH
-       ========================================= */
+    /* ================================
+       SAAT
+       ================================ */
 
     function updateClock() {
 
@@ -1253,18 +1344,22 @@
           "tr-TR",
           {
             timeZone: "Europe/Istanbul",
+
             hour: "2-digit",
             minute: "2-digit",
             second: "2-digit",
+
             hour12: false
           }
         );
+
 
       const date =
         now.toLocaleDateString(
           "tr-TR",
           {
             timeZone: "Europe/Istanbul",
+
             weekday: "long",
             day: "numeric",
             month: "long",
@@ -1272,29 +1367,40 @@
           }
         );
 
+
       const niceDate =
         date.charAt(0).toUpperCase() +
         date.slice(1);
 
-      document.getElementById("clock")
+
+      document
+        .getElementById("clock")
         .textContent = time;
 
-      document.getElementById("date")
+
+      document
+        .getElementById("date")
         .textContent = niceDate;
 
-      document.getElementById("sectionDate")
+
+      document
+        .getElementById("sectionDate")
         .textContent = niceDate;
+
     }
 
 
     updateClock();
 
-    setInterval(updateClock, 1000);
+    setInterval(
+      updateClock,
+      1000
+    );
 
 
-    /* =========================================
-       SAĞLIK DURUMU
-       ========================================= */
+    /* ================================
+       SAĞLIK
+       ================================ */
 
     function setHealth(status) {
 
@@ -1306,11 +1412,21 @@
       updateBetaserc();
       updateProgress();
 
+
       if (status === "bad") {
-        showToast("Tamam canım, bugün biraz daha dikkat edelim 🥺💗");
+
+        showToast(
+          "Tamam canım, bugün biraz daha dikkat edelim 🥺💗"
+        );
+
       } else {
-        showToast("Ohh, iyi olmana sevindim Esilaaa 🌸");
+
+        showToast(
+          "Ohh, iyi olmana sevindim Esilaaa 🌸"
+        );
+
       }
+
     }
 
 
@@ -1323,26 +1439,33 @@
           data.health === "good"
         );
 
+
       document
         .getElementById("badBtn")
         .classList.toggle(
           "active",
           data.health === "bad"
         );
+
     }
 
 
-    /* =========================================
-       BETASERC GÖRÜNÜMÜ
-       ========================================= */
+    /* ================================
+       BETASERC
+       ================================ */
 
     function updateBetaserc() {
 
       const evening =
-        document.getElementById("eveningDose");
+        document.getElementById(
+          "eveningDose"
+        );
+
 
       const description =
-        document.getElementById("betasercDesc");
+        document.getElementById(
+          "betasercDesc"
+        );
 
 
       if (data.health === "bad") {
@@ -1358,39 +1481,68 @@
 
         description.textContent =
           "İyiyken sabah kullan.";
+
       }
 
+
       updateDoseButtons();
+
     }
 
 
-    /* =========================================
-       DOZ DEĞİŞTİR
-       ========================================= */
+    /* ================================
+       BETASERC DOZU
+       ================================ */
 
-    function toggleDose(name, button) {
+    function toggleDose(
+      name,
+      button
+    ) {
 
-      const wasDone = data.doses[name];
+      const wasDone =
+        data.doses[name];
 
-      data.doses[name] = !wasDone;
+
+      data.doses[name] =
+        !wasDone;
+
 
       saveData();
 
       updateDoseButtons();
       updateProgress();
 
+
       if (!wasDone) {
 
         createHearts(button);
 
-        if (name === "betasercMorning") {
-          showToast("Sabah Betaserc tamam 💗");
+
+        if (
+          name ===
+          "betasercMorning"
+        ) {
+
+          showToast(
+            "Sabah Betaserc tamam 💗"
+          );
+
         }
 
-        if (name === "betasercEvening") {
-          showToast("Akşam Betaserc de tamam 🌙💗");
+
+        if (
+          name ===
+          "betasercEvening"
+        ) {
+
+          showToast(
+            "Akşam Betaserc de tamam 🌙💗"
+          );
+
         }
+
       }
+
     }
 
 
@@ -1401,51 +1553,79 @@
         data.doses.betasercMorning
       );
 
+
       updateButton(
         "betasercEvening",
         data.doses.betasercEvening
       );
 
+
       document
-        .getElementById("betasercCard")
+        .getElementById(
+          "betasercCard"
+        )
         .classList.toggle(
+
           "done-card",
+
           data.doses.betasercMorning &&
           (
             data.health === "good" ||
             data.doses.betasercEvening
           )
+
         );
+
     }
 
 
-    /* =========================================
-       TEK DOZ İLAÇ
-       ========================================= */
+    /* ================================
+       CITOLES / B12
+       ================================ */
 
-    function toggleMedicine(name, button) {
+    function toggleMedicine(
+      name,
+      button
+    ) {
 
-      const wasDone = data.doses[name];
+      const wasDone =
+        data.doses[name];
 
-      data.doses[name] = !wasDone;
+
+      data.doses[name] =
+        !wasDone;
+
 
       saveData();
 
       updateMedicineButtons();
       updateProgress();
 
+
       if (!wasDone) {
 
         createHearts(button);
 
+
         if (name === "citoles") {
-          showToast("Citoles de tamam 🌿💗");
+
+          showToast(
+            "Citoles de tamam 🌿💗"
+          );
+
         }
 
+
         if (name === "b12") {
-          showToast("B12 de tamam 🧡✨");
+
+          showToast(
+            "B12 de tamam 🧡✨"
+          );
+
         }
+
       }
+
     }
 
 
@@ -1455,6 +1635,7 @@
         "citoles",
         data.doses.citoles
       );
+
 
       updateButton(
         "b12",
@@ -1476,54 +1657,73 @@
           "done-card",
           data.doses.b12
         );
+
     }
 
 
-    function updateButton(id, done) {
+    function updateButton(
+      id,
+      done
+    ) {
 
       const button =
         document.getElementById(id);
 
+
       if (!button) return;
+
 
       button.classList.toggle(
         "done",
         done
       );
 
+
       button.textContent =
         done
           ? "✓ Alındı"
           : "Aldım 💗";
+
     }
 
 
-    /* =========================================
-       KALP ANİMASYONU
-       ========================================= */
+    /* ================================
+       KALPLER
+       ================================ */
 
     function createHearts(button) {
 
       const rect =
         button.getBoundingClientRect();
 
+
       const hearts = [
+
         "💗",
         "💕",
         "💖",
         "💞",
         "🌸",
         "✨"
+
       ];
 
 
-      for (let i = 0; i < 9; i++) {
+      for (
+        let i = 0;
+        i < 9;
+        i++
+      ) {
 
         const heart =
-          document.createElement("div");
+          document.createElement(
+            "div"
+          );
+
 
         heart.className =
           "floating-heart";
+
 
         heart.textContent =
           hearts[
@@ -1574,19 +1774,24 @@
           ) + "s";
 
 
-        document.body.appendChild(heart);
+        document.body.appendChild(
+          heart
+        );
 
 
-        setTimeout(() => {
-          heart.remove();
-        }, 1500);
+        setTimeout(
+          () => heart.remove(),
+          1500
+        );
+
       }
+
     }
 
 
-    /* =========================================
+    /* ================================
        İLERLEME
-       ========================================= */
+       ================================ */
 
     function updateProgress() {
 
@@ -1599,7 +1804,9 @@
       let completed = 0;
 
 
-      if (data.doses.betasercMorning) {
+      if (
+        data.doses.betasercMorning
+      ) {
         completed++;
       }
 
@@ -1612,12 +1819,16 @@
       }
 
 
-      if (data.doses.citoles) {
+      if (
+        data.doses.citoles
+      ) {
         completed++;
       }
 
 
-      if (data.doses.b12) {
+      if (
+        data.doses.b12
+      ) {
         completed++;
       }
 
@@ -1631,13 +1842,21 @@
       container.innerHTML = "";
 
 
-      for (let i = 0; i < total; i++) {
+      for (
+        let i = 0;
+        i < total;
+        i++
+      ) {
 
         const heart =
-          document.createElement("span");
+          document.createElement(
+            "span"
+          );
+
 
         heart.className =
           "progress-heart";
+
 
         heart.textContent =
           i < completed
@@ -1646,17 +1865,29 @@
 
 
         if (i < completed) {
-          heart.classList.add("active");
+
+          heart.classList.add(
+            "active"
+          );
+
         }
 
-        container.appendChild(heart);
+
+        container.appendChild(
+          heart
+        );
+
       }
 
 
       document
-        .getElementById("progressCount")
+        .getElementById(
+          "progressCount"
+        )
         .textContent =
-          completed + " / " + total;
+          completed +
+          " / " +
+          total;
 
 
       document
@@ -1665,12 +1896,13 @@
           "show",
           completed === total
         );
+
     }
 
 
-    /* =========================================
-       TOAST MESAJI
-       ========================================= */
+    /* ================================
+       TOAST
+       ================================ */
 
     let toastTimer;
 
@@ -1678,28 +1910,43 @@
     function showToast(message) {
 
       const toast =
-        document.getElementById("toast");
-
-      toast.textContent = message;
-
-      toast.classList.add("show");
+        document.getElementById(
+          "toast"
+        );
 
 
-      clearTimeout(toastTimer);
+      toast.textContent =
+        message;
+
+
+      toast.classList.add(
+        "show"
+      );
+
+
+      clearTimeout(
+        toastTimer
+      );
 
 
       toastTimer =
-        setTimeout(() => {
+        setTimeout(
+          () => {
 
-          toast.classList.remove("show");
+            toast.classList.remove(
+              "show"
+            );
 
-        }, 1800);
+          },
+          1800
+        );
+
     }
 
 
-    /* =========================================
+    /* ================================
        TEMA
-       ========================================= */
+       ================================ */
 
     function toggleTheme() {
 
@@ -1711,14 +1958,21 @@
 
       localStorage.setItem(
         "esila_theme",
-        dark ? "dark" : "light"
+        dark
+          ? "dark"
+          : "light"
       );
 
 
       document
-        .getElementById("themeButton")
+        .getElementById(
+          "themeButton"
+        )
         .textContent =
-          dark ? "☀️" : "🌙";
+          dark
+            ? "☀️"
+            : "🌙";
+
     }
 
 
@@ -1730,64 +1984,88 @@
         );
 
 
-      if (theme === "dark") {
+      if (
+        theme === "dark"
+      ) {
 
         document.body
           .classList
           .add("dark");
 
+
         document
-          .getElementById("themeButton")
-          .textContent = "☀️";
+          .getElementById(
+            "themeButton"
+          )
+          .textContent =
+          "☀️";
+
       }
+
     }
 
 
-    /* =========================================
-       GÜN DEĞİŞİNCE YENİ GÜNÜ YÜKLE
-       ========================================= */
+    /* ================================
+       00:00 YENİ GÜN
+       ================================ */
 
     let currentDay =
       turkeyDateKey();
 
 
-    setInterval(() => {
+    setInterval(
+      () => {
 
-      const newDay =
-        turkeyDateKey();
-
-
-      if (newDay !== currentDay) {
-
-        currentDay = newDay;
-
-        data = getData();
-
-        refresh();
-      }
-
-    }, 30000);
+        const newDay =
+          turkeyDateKey();
 
 
-    /* =========================================
-       SAYFAYI YENİLE
-       ========================================= */
+        if (
+          newDay !== currentDay
+        ) {
+
+          currentDay =
+            newDay;
+
+
+          data =
+            getData();
+
+
+          refresh();
+
+        }
+
+      },
+      1000
+    );
+
+
+    /* ================================
+       YENİLE
+       ================================ */
 
     function refresh() {
 
       updateHealth();
+
       updateBetaserc();
+
       updateMedicineButtons();
+
       updateProgress();
+
       updateClock();
+
     }
 
 
-    /* =========================================
+    /* ================================
        BAŞLANGIÇ
-       ========================================= */
+       ================================ */
 
     loadTheme();
+
     refresh();
 
   </script>

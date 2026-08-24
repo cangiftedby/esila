@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
 <title>Eşşek</title>
 
@@ -12,27 +12,16 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-:root {
-    --bg: #171317;
-    --card: #241d21;
-    --card2: #2c2328;
-    --text: #fff1f5;
-    --muted: #b9a6ad;
-    --pink: #d889a1;
-    --pink-soft: rgba(216,137,161,.13);
-    --green: #6fb28f;
-    --border: rgba(255,255,255,.07);
-}
-
 html,
 body {
     margin: 0;
+    padding: 0;
     min-height: 100%;
-    background: var(--bg);
 }
 
 body {
-    color: var(--text);
+    background: #151114;
+    color: #fff1f5;
     font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -44,255 +33,312 @@ body {
     overflow-x: hidden;
 }
 
-/* ==================================================
-   YILDIZLAR
-   Gerçekten ekran boyunca hareket ediyorlar.
-================================================== */
+/* =====================================================
+   HAREKETLİ YILDIZLAR
+===================================================== */
 
 .stars {
     position: fixed;
     inset: 0;
+    z-index: 0;
+
     overflow: hidden;
     pointer-events: none;
-    z-index: 0;
 }
 
 .star {
     position: absolute;
-    left: -20px;
+    left: -30px;
+
+    display: block;
 
     width: 3px;
     height: 3px;
 
     border-radius: 50%;
 
-    background: #f5b8c9;
+    background: #f3aec2;
 
     box-shadow:
-        0 0 6px rgba(245,184,201,.9);
+        0 0 5px #f3aec2,
+        0 0 10px rgba(243,174,194,.5);
 
-    opacity: 0;
+    opacity: .75;
 
-    animation:
-        starTravel linear infinite,
-        starFade ease-in-out infinite alternate;
+    animation-name: moveStar;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
 }
 
-/*
-   Her yıldız farklı yerden başlıyor,
-   farklı hızla ve farklı yönde kayıyor.
-*/
+/* Her yıldız farklı yükseklik / hız / boyut */
 
 .star:nth-child(1) {
-    top: 12%;
-    animation-duration: 13s, 2.2s;
-    animation-delay: -4s, -1s;
+    top: 8%;
+    width: 3px;
+    height: 3px;
+    animation-duration: 12s;
+    animation-delay: -8s;
 }
 
 .star:nth-child(2) {
-    top: 25%;
+    top: 17%;
     width: 2px;
     height: 2px;
-    animation-duration: 17s, 3s;
-    animation-delay: -11s, -2s;
+    animation-duration: 18s;
+    animation-delay: -4s;
 }
 
 .star:nth-child(3) {
-    top: 39%;
+    top: 26%;
     width: 4px;
     height: 4px;
-    animation-duration: 20s, 2.5s;
-    animation-delay: -7s, -1s;
+    animation-duration: 15s;
+    animation-delay: -12s;
 }
 
 .star:nth-child(4) {
-    top: 52%;
+    top: 34%;
     width: 2px;
     height: 2px;
-    animation-duration: 15s, 3.2s;
-    animation-delay: -13s, -2s;
+    animation-duration: 21s;
+    animation-delay: -17s;
 }
 
 .star:nth-child(5) {
-    top: 67%;
+    top: 43%;
     width: 3px;
     height: 3px;
-    animation-duration: 18s, 2.8s;
-    animation-delay: -5s, -1.5s;
+    animation-duration: 14s;
+    animation-delay: -5s;
 }
 
 .star:nth-child(6) {
-    top: 81%;
+    top: 51%;
     width: 2px;
     height: 2px;
-    animation-duration: 14s, 2.4s;
-    animation-delay: -9s, -.8s;
+    animation-duration: 19s;
+    animation-delay: -13s;
 }
 
 .star:nth-child(7) {
-    top: 18%;
-    width: 2px;
-    height: 2px;
-    animation-duration: 22s, 3.5s;
-    animation-delay: -18s, -2s;
+    top: 59%;
+    width: 4px;
+    height: 4px;
+    animation-duration: 17s;
+    animation-delay: -2s;
 }
 
 .star:nth-child(8) {
-    top: 74%;
-    width: 4px;
-    height: 4px;
-    animation-duration: 19s, 2.7s;
-    animation-delay: -14s, -1s;
+    top: 67%;
+    width: 2px;
+    height: 2px;
+    animation-duration: 13s;
+    animation-delay: -10s;
 }
 
 .star:nth-child(9) {
-    top: 46%;
-    width: 2px;
-    height: 2px;
-    animation-duration: 16s, 3s;
-    animation-delay: -2s, -2s;
+    top: 74%;
+    width: 3px;
+    height: 3px;
+    animation-duration: 20s;
+    animation-delay: -15s;
 }
 
 .star:nth-child(10) {
-    top: 90%;
+    top: 82%;
+    width: 2px;
+    height: 2px;
+    animation-duration: 16s;
+    animation-delay: -7s;
+}
+
+.star:nth-child(11) {
+    top: 91%;
     width: 3px;
     height: 3px;
-    animation-duration: 21s, 2.6s;
-    animation-delay: -16s, -1s;
+    animation-duration: 22s;
+    animation-delay: -18s;
 }
 
-@keyframes starTravel {
-    from {
-        transform:
-            translate3d(-30px, 0, 0)
-            rotate(0deg);
+.star:nth-child(12) {
+    top: 13%;
+    width: 2px;
+    height: 2px;
+    animation-duration: 24s;
+    animation-delay: -20s;
+}
+
+.star:nth-child(13) {
+    top: 31%;
+    width: 3px;
+    height: 3px;
+    animation-duration: 18s;
+    animation-delay: -9s;
+}
+
+.star:nth-child(14) {
+    top: 47%;
+    width: 2px;
+    height: 2px;
+    animation-duration: 12s;
+    animation-delay: -6s;
+}
+
+.star:nth-child(15) {
+    top: 63%;
+    width: 3px;
+    height: 3px;
+    animation-duration: 23s;
+    animation-delay: -19s;
+}
+
+.star:nth-child(16) {
+    top: 87%;
+    width: 2px;
+    height: 2px;
+    animation-duration: 15s;
+    animation-delay: -11s;
+}
+
+@keyframes moveStar {
+    0% {
+        transform: translate3d(-40px, 0, 0);
+        opacity: 0;
     }
 
-    to {
-        transform:
-            translate3d(calc(100vw + 60px), -80px, 0)
-            rotate(180deg);
+    8% {
+        opacity: .7;
+    }
+
+    50% {
+        opacity: .85;
+    }
+
+    92% {
+        opacity: .7;
+    }
+
+    100% {
+        transform: translate3d(calc(100vw + 80px), -35px, 0);
+        opacity: 0;
     }
 }
 
-@keyframes starFade {
-    from {
-        opacity: .15;
-    }
-
-    to {
-        opacity: .75;
-    }
-}
-
-/* ==================================================
-   UYGULAMA
-================================================== */
+/* =====================================================
+   ANA ALAN
+===================================================== */
 
 .app {
     position: relative;
     z-index: 2;
 
-    width: 100%;
-    max-width: 600px;
+    width: min(100% - 24px, 575px);
 
-    margin: auto;
+    margin: 0 auto;
 
     padding:
-        max(15px, env(safe-area-inset-top))
-        14px
-        max(25px, env(safe-area-inset-bottom));
+        max(12px, env(safe-area-inset-top))
+        0
+        max(24px, env(safe-area-inset-bottom));
 }
 
-/* ==================================================
+/* =====================================================
    BAŞLIK
-================================================== */
+===================================================== */
 
 .header {
-    padding: 5px 2px 15px;
+    padding: 3px 2px 16px;
 }
 
 .header h1 {
     margin: 0;
 
-    font-size: 25px;
+    font-size: 24px;
+    line-height: 1;
+
     font-weight: 900;
 
-    letter-spacing: -.7px;
+    letter-spacing: -.8px;
 }
 
-/* ==================================================
+/* =====================================================
    SAAT
-================================================== */
+===================================================== */
 
 .clock-card {
-    padding: 20px 12px;
+    width: 100%;
 
-    border-radius: 22px;
-
-    background: var(--card);
-
-    border: 1px solid var(--border);
+    padding: 24px 12px 19px;
 
     text-align: center;
 
+    background: #211a1e;
+
+    border: 1px solid rgba(255,255,255,.09);
+
+    border-radius: 22px;
+
     box-shadow:
-        0 10px 30px rgba(0,0,0,.2);
+        0 12px 35px rgba(0,0,0,.22);
 }
 
 .clock {
-    font-size: clamp(42px, 14vw, 62px);
+    font-size: clamp(43px, 12vw, 62px);
 
     line-height: 1;
 
     font-weight: 900;
 
-    color: #e9a7bb;
+    letter-spacing: -2px;
+
+    color: #e9a3b9;
 
     font-variant-numeric: tabular-nums;
 }
 
 .date {
-    margin-top: 9px;
+    margin-top: 10px;
 
-    font-size: 13px;
-    font-weight: 700;
+    font-size: 12px;
+    font-weight: 800;
 }
 
 .timezone {
     margin-top: 4px;
 
-    color: var(--muted);
+    color: #9d8b92;
 
-    font-size: 9px;
+    font-size: 8px;
 }
 
-/* ==================================================
+/* =====================================================
    NASILSIN
-================================================== */
+===================================================== */
 
 .health-card {
     margin-top: 13px;
 
-    padding: 15px;
+    padding: 16px;
+
+    background: #211a1e;
+
+    border: 1px solid rgba(255,255,255,.08);
 
     border-radius: 20px;
-
-    background: var(--card);
-
-    border: 1px solid var(--border);
 }
 
 .health-title {
     margin-bottom: 9px;
 
-    font-size: 13px;
-    font-weight: 850;
+    font-size: 12px;
+    font-weight: 900;
 }
 
 .health-buttons {
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 9px;
 }
 
@@ -303,27 +349,26 @@ body {
 
     border-radius: 13px;
 
-    background: var(--card2);
+    background: #281f24;
 
-    color: var(--text);
+    color: #fff1f5;
 
     cursor: pointer;
 }
 
 .health-btn.active {
-    background: var(--pink-soft);
+    background: #392a31;
 
-    border-color:
-        rgba(216,137,161,.3);
+    border-color: #805363;
 
-    color: #efaec1;
+    color: #eca9bd;
 }
 
 .health-label {
     display: block;
 
-    font-size: 11px;
-    font-weight: 850;
+    font-size: 10px;
+    font-weight: 900;
 }
 
 .health-sub {
@@ -331,39 +376,39 @@ body {
 
     margin-top: 3px;
 
-    color: var(--muted);
+    color: #9e8b92;
 
-    font-size: 8px;
+    font-size: 7px;
 }
 
-/* ==================================================
+/* =====================================================
    İLAÇ BAŞLIĞI
-================================================== */
+===================================================== */
 
 .section-head {
     display: flex;
 
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 
     margin:
         17px 3px 9px;
 }
 
 .section-title {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 900;
 }
 
 .section-date {
-    color: var(--muted);
+    color: #918087;
 
     font-size: 8px;
 }
 
-/* ==================================================
-   İLAÇ KARTLARI
-================================================== */
+/* =====================================================
+   İLAÇLAR
+===================================================== */
 
 .medicines {
     display: flex;
@@ -372,26 +417,20 @@ body {
     gap: 9px;
 }
 
-/*
-   EN ÖNEMLİ KISIM:
-
-   Her kart:
-
-   ikon | içerik | BUTON
-
-   şeklinde.
-
-   Sağdaki kolon her kartta tam olarak
-   82px olduğu için butonlar aynı hizada.
-*/
-
 .medicine {
     display: grid;
 
+    /*
+       TAM HİZALAMA BURADA:
+
+       ikon | içerik | 90px sabit buton kolonu
+
+       Her ilaç aynı 90px kolonu kullanıyor.
+    */
     grid-template-columns:
-        42px
+        43px
         minmax(0, 1fr)
-        82px;
+        90px;
 
     align-items: center;
 
@@ -401,19 +440,20 @@ body {
 
     padding: 12px;
 
+    background: #211a1e;
+
+    border: 1px solid rgba(255,255,255,.08);
+
     border-radius: 18px;
-
-    background: var(--card);
-
-    border: 1px solid var(--border);
-
-    box-shadow:
-        0 7px 22px rgba(0,0,0,.18);
 }
 
+/* =====================================================
+   İKON
+===================================================== */
+
 .med-icon {
-    width: 42px;
-    height: 42px;
+    width: 43px;
+    height: 43px;
 
     display: flex;
 
@@ -426,7 +466,7 @@ body {
 }
 
 .bet-icon {
-    background: rgba(216,137,161,.12);
+    background: rgba(216,137,161,.13);
 }
 
 .cit-icon {
@@ -437,35 +477,32 @@ body {
     background: rgba(235,165,101,.12);
 }
 
+/* =====================================================
+   İÇERİK
+===================================================== */
+
 .med-content {
     min-width: 0;
 }
 
 .med-name {
-    font-size: 13px;
-    font-weight: 900;
-
     margin-bottom: 4px;
+
+    font-size: 12px;
+    font-weight: 900;
 }
 
 .med-desc {
-    color: var(--muted);
+    color: #a39299;
 
-    font-size: 9px;
+    font-size: 8px;
 
-    line-height: 1.35;
+    line-height: 1.4;
 }
 
-/* ==================================================
-   BETASERC SABAH / AKŞAM
-================================================== */
-
-/*
-   Burada artık dose ayrı bir kolon sistemi
-   kullanıyor.
-
-   İçerik | 82px BUTON
-*/
+/* =====================================================
+   BETASERC DOZLARI
+===================================================== */
 
 .dose-list {
     display: flex;
@@ -473,51 +510,59 @@ body {
 
     gap: 6px;
 
-    margin-top: 9px;
+    margin-top: 8px;
 }
 
-.dose {
-    display: grid;
+.dose-row {
+    min-height: 31px;
 
-    grid-template-columns:
-        minmax(0, 1fr)
-        82px;
+    display: flex;
 
     align-items: center;
 
-    column-gap: 7px;
+    padding-left: 8px;
 
-    min-height: 40px;
+    border-radius: 9px;
 
-    padding:
-        3px 4px 3px 7px;
+    background: rgba(216,137,161,.07);
 
-    border-radius: 10px;
+    color: #a9979e;
 
-    background:
-        rgba(216,137,161,.07);
+    font-size: 8px;
+    font-weight: 800;
 }
 
-.dose-info {
-    min-width: 0;
+/* =====================================================
+   BUTON KOLONU
 
-    color: var(--muted);
+   Betaserc'te iki buton burada.
+   Citoles/B12'de tek buton burada.
 
-    font-size: 9px;
-    font-weight: 750;
-}
+   Böylece SAĞ KENARLAR %100 AYNI.
+===================================================== */
 
-/* ==================================================
-   BUTON
-================================================== */
-
-.take {
-    width: 82px;
-    min-width: 82px;
-
-    height: 36px;
+.action-column {
+    width: 90px;
 
     display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: stretch;
+
+    gap: 6px;
+}
+
+.take {
+    width: 90px;
+    min-width: 90px;
+
+    height: 37px;
+
+    display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -527,7 +572,7 @@ body {
 
     border-radius: 10px;
 
-    background: var(--pink);
+    background: #d5849d;
 
     color: white;
 
@@ -540,31 +585,31 @@ body {
 
     transition:
         transform .12s ease,
-        background .2s ease;
+        background .18s ease;
 }
 
 .take:active {
-    transform: scale(.94);
+    transform: scale(.95);
 }
 
 .take.done {
-    background: var(--green);
+    background: #6fae8c;
 }
 
-/* ==================================================
-   ALT DURUM
-================================================== */
+/* =====================================================
+   BUGÜNKÜ DURUM
+===================================================== */
 
 .progress-card {
     margin-top: 12px;
 
     padding: 13px 15px;
 
+    background: #211a1e;
+
+    border: 1px solid rgba(255,255,255,.08);
+
     border-radius: 17px;
-
-    background: var(--card);
-
-    border: 1px solid var(--border);
 }
 
 .progress-head {
@@ -575,14 +620,14 @@ body {
 }
 
 .progress-title {
-    font-size: 11px;
-    font-weight: 850;
+    font-size: 10px;
+    font-weight: 900;
 }
 
 .progress-count {
-    color: #e9a7bb;
+    color: #e7a2b8;
 
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 900;
 }
 
@@ -591,17 +636,17 @@ body {
 
     gap: 4px;
 
-    margin-top: 6px;
+    margin-top: 7px;
 }
 
 .progress-heart {
-    color: #614b53;
+    color: #5f4b53;
 
-    font-size: 17px;
+    font-size: 15px;
 }
 
 .progress-heart.active {
-    color: #e9a7bb;
+    color: #e7a2b8;
 }
 
 .complete {
@@ -611,16 +656,15 @@ body {
 
     padding: 8px;
 
-    border-radius: 10px;
+    border-radius: 9px;
 
-    background:
-        rgba(111,178,143,.1);
+    background: rgba(111,174,140,.1);
 
-    color: #91c8a9;
+    color: #91c8a8;
 
     text-align: center;
 
-    font-size: 9px;
+    font-size: 8px;
     font-weight: 800;
 }
 
@@ -628,42 +672,44 @@ body {
     display: block;
 }
 
-/* ==================================================
+/* =====================================================
    SIFIRLA
-================================================== */
+===================================================== */
 
 .reset-area {
     text-align: center;
 
-    margin-top: 12px;
+    margin-top: 11px;
 }
 
 .reset-btn {
-    border: 0;
-
     padding: 5px 8px;
+
+    border: 0;
 
     background: transparent;
 
-    color: #88747c;
+    color: #76666c;
 
-    font-size: 8px;
+    font-size: 7px;
 
     text-decoration: underline;
 
     cursor: pointer;
 }
 
-/* ==================================================
+/* =====================================================
    KALPLER
-================================================== */
+===================================================== */
 
 .floating-heart {
     position: fixed;
 
-    z-index: 999;
+    z-index: 100;
 
     pointer-events: none;
+
+    color: #ec9fb7;
 
     font-size: 17px;
 
@@ -672,13 +718,9 @@ body {
 }
 
 @keyframes heartFloat {
-
     0% {
         opacity: 0;
-
-        transform:
-            translate(0, 0)
-            scale(.5);
+        transform: translate(0,0) scale(.5);
     }
 
     15% {
@@ -687,20 +729,16 @@ body {
 
     100% {
         opacity: 0;
-
         transform:
-            translate(
-                var(--moveX),
-                -90px
-            )
+            translate(var(--moveX), -90px)
             rotate(var(--rotate))
             scale(1);
     }
 }
 
-/* ==================================================
+/* =====================================================
    TOAST
-================================================== */
+===================================================== */
 
 .toast {
     position: fixed;
@@ -708,10 +746,7 @@ body {
     left: 50%;
     bottom: 18px;
 
-    z-index: 1000;
-
-    transform:
-        translate(-50%, 20px);
+    z-index: 200;
 
     padding: 9px 13px;
 
@@ -719,17 +754,19 @@ body {
 
     background: #fff0f4;
 
-    color: #49333b;
+    color: #49343b;
 
-    font-size: 10px;
-    font-weight: 800;
+    font-size: 9px;
+    font-weight: 900;
 
     opacity: 0;
 
     pointer-events: none;
 
-    transition:
-        .2s ease;
+    transform:
+        translate(-50%, 20px);
+
+    transition: .2s ease;
 }
 
 .toast.show {
@@ -739,22 +776,21 @@ body {
         translate(-50%, 0);
 }
 
-/* ==================================================
+/* =====================================================
    KÜÇÜK IPHONE
-================================================== */
+===================================================== */
 
-@media (max-width: 380px) {
+@media (max-width: 390px) {
 
     .app {
-        padding-left: 10px;
-        padding-right: 10px;
+        width: calc(100% - 18px);
     }
 
     .medicine {
         grid-template-columns:
-            38px
+            39px
             minmax(0, 1fr)
-            76px;
+            78px;
 
         column-gap: 8px;
 
@@ -762,27 +798,47 @@ body {
     }
 
     .med-icon {
-        width: 38px;
-        height: 38px;
+        width: 39px;
+        height: 39px;
+    }
+
+    .action-column {
+        width: 78px;
     }
 
     .take {
-        width: 76px;
-        min-width: 76px;
+        width: 78px;
+        min-width: 78px;
     }
 
-    .dose {
-        grid-template-columns:
-            minmax(0,1fr)
-            76px;
+    .clock {
+        font-size: 42px;
     }
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media (max-width: 350px) {
 
-    .star,
-    .floating-heart {
-        animation: none;
+    .medicine {
+        grid-template-columns:
+            36px
+            minmax(0, 1fr)
+            72px;
+    }
+
+    .med-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .action-column {
+        width: 72px;
+    }
+
+    .take {
+        width: 72px;
+        min-width: 72px;
+
+        font-size: 8px;
     }
 }
 </style>
@@ -790,11 +846,17 @@ body {
 
 <body>
 
-<!-- ==================================================
+<!-- =====================================================
      YILDIZLAR
-================================================== -->
+===================================================== -->
 
 <div class="stars">
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
     <span class="star"></span>
     <span class="star"></span>
     <span class="star"></span>
@@ -817,17 +879,11 @@ body {
 
     <section class="clock-card">
 
-        <div
-            class="clock"
-            id="clock"
-        >
+        <div id="clock" class="clock">
             00:00:00
         </div>
 
-        <div
-            class="date"
-            id="date"
-        >
+        <div id="date" class="date">
             Tarih
         </div>
 
@@ -837,7 +893,7 @@ body {
 
     </section>
 
-    <!-- DURUM -->
+    <!-- NASILSIN -->
 
     <section class="health-card">
 
@@ -848,8 +904,8 @@ body {
         <div class="health-buttons">
 
             <button
-                class="health-btn"
                 id="goodBtn"
+                class="health-btn"
                 onclick="setHealth('good')"
             >
                 <span class="health-label">
@@ -862,8 +918,8 @@ body {
             </button>
 
             <button
-                class="health-btn"
                 id="badBtn"
+                class="health-btn"
                 onclick="setHealth('bad')"
             >
                 <span class="health-label">
@@ -879,7 +935,7 @@ body {
 
     </section>
 
-    <!-- İLAÇLAR -->
+    <!-- İLAÇ BAŞLIĞI -->
 
     <div class="section-head">
 
@@ -888,15 +944,19 @@ body {
         </div>
 
         <div
-            class="section-date"
             id="sectionDate"
+            class="section-date"
         ></div>
 
     </div>
 
     <section class="medicines">
 
-        <!-- BETASERC -->
+        <!-- =================================================
+             BETASERC
+
+             BUTONLAR SAĞDAKİ SABİT 90px KOLONDA.
+        ================================================== -->
 
         <article class="medicine">
 
@@ -911,71 +971,58 @@ body {
                 </div>
 
                 <div
-                    class="med-desc"
                     id="betasercDesc"
+                    class="med-desc"
                 >
                     İyiyken sabah kullan.
                 </div>
 
                 <div class="dose-list">
 
-                    <div class="dose">
-
-                        <div class="dose-info">
-                            Sabah
-                        </div>
-
-                        <button
-                            class="take"
-                            id="betasercMorning"
-                            onclick="
-                            toggleDose(
-                                'betasercMorning',
-                                this
-                            )
-                            "
-                        >
-                            Aldım
-                        </button>
-
+                    <div class="dose-row">
+                        Sabah
                     </div>
 
                     <div
-                        class="dose"
-                        id="eveningDose"
+                        id="eveningRow"
+                        class="dose-row"
                         style="display:none"
                     >
-
-                        <div class="dose-info">
-                            Akşam
-                        </div>
-
-                        <button
-                            class="take"
-                            id="betasercEvening"
-                            onclick="
-                            toggleDose(
-                                'betasercEvening',
-                                this
-                            )
-                            "
-                        >
-                            Aldım
-                        </button>
-
+                        Akşam
                     </div>
 
                 </div>
 
             </div>
 
-            <!-- Sağdaki kolonun kartla
-                 aynı genişlikte kalması için -->
-            <div></div>
+            <!-- SABİT BUTON KOLONU -->
+
+            <div class="action-column">
+
+                <button
+                    id="betasercMorning"
+                    class="take"
+                    onclick="toggleDose('betasercMorning', this)"
+                >
+                    Aldım
+                </button>
+
+                <button
+                    id="betasercEvening"
+                    class="take"
+                    style="display:none"
+                    onclick="toggleDose('betasercEvening', this)"
+                >
+                    Aldım
+                </button>
+
+            </div>
 
         </article>
 
-        <!-- CITOLES -->
+        <!-- =================================================
+             CITOLES
+        ================================================== -->
 
         <article class="medicine">
 
@@ -995,22 +1042,23 @@ body {
 
             </div>
 
-            <button
-                class="take"
-                id="citoles"
-                onclick="
-                toggleMedicine(
-                    'citoles',
-                    this
-                )
-                "
-            >
-                Aldım
-            </button>
+            <div class="action-column">
+
+                <button
+                    id="citoles"
+                    class="take"
+                    onclick="toggleDose('citoles', this)"
+                >
+                    Aldım
+                </button>
+
+            </div>
 
         </article>
 
-        <!-- B12 -->
+        <!-- =================================================
+             B12
+        ================================================== -->
 
         <article class="medicine">
 
@@ -1030,18 +1078,17 @@ body {
 
             </div>
 
-            <button
-                class="take"
-                id="b12"
-                onclick="
-                toggleMedicine(
-                    'b12',
-                    this
-                )
-                "
-            >
-                Aldım
-            </button>
+            <div class="action-column">
+
+                <button
+                    id="b12"
+                    class="take"
+                    onclick="toggleDose('b12', this)"
+                >
+                    Aldım
+                </button>
+
+            </div>
 
         </article>
 
@@ -1058,8 +1105,8 @@ body {
             </div>
 
             <div
-                class="progress-count"
                 id="progressCount"
+                class="progress-count"
             >
                 0 / 3
             </div>
@@ -1067,13 +1114,13 @@ body {
         </div>
 
         <div
-            class="hearts"
             id="hearts"
+            class="hearts"
         ></div>
 
         <div
-            class="complete"
             id="complete"
+            class="complete"
         >
             Bugünlük tamamdır.
         </div>
@@ -1093,16 +1140,13 @@ body {
 
 </main>
 
-<div
-    class="toast"
-    id="toast"
-></div>
+<div id="toast" class="toast"></div>
 
 <script>
 
-/* ==================================================
+/* =====================================================
    TÜRKİYE TARİHİ
-================================================== */
+===================================================== */
 
 function turkeyDate() {
 
@@ -1114,20 +1158,18 @@ function turkeyDate() {
             month: "2-digit",
             day: "2-digit"
         }
-    ).format(
-        new Date()
-    );
+    ).format(new Date());
+
 }
 
 
-/* ==================================================
+/* =====================================================
    VERİ
-================================================== */
+===================================================== */
 
-function key() {
+function storageKey() {
 
-    return "esek_" +
-        turkeyDate();
+    return "esek_" + turkeyDate();
 
 }
 
@@ -1156,13 +1198,11 @@ function loadData() {
 
     const saved =
         localStorage.getItem(
-            key()
+            storageKey()
         );
 
     if (!saved) {
-
         return defaultData();
-
     }
 
     try {
@@ -1181,19 +1221,19 @@ function loadData() {
 let data = loadData();
 
 
-function save() {
+function saveData() {
 
     localStorage.setItem(
-        key(),
+        storageKey(),
         JSON.stringify(data)
     );
 
 }
 
 
-/* ==================================================
+/* =====================================================
    SAAT
-================================================== */
+===================================================== */
 
 function updateClock() {
 
@@ -1203,13 +1243,10 @@ function updateClock() {
         now.toLocaleTimeString(
             "tr-TR",
             {
-                timeZone:
-                    "Europe/Istanbul",
-
+                timeZone: "Europe/Istanbul",
                 hour: "2-digit",
                 minute: "2-digit",
                 second: "2-digit",
-
                 hour12: false
             }
         );
@@ -1218,9 +1255,7 @@ function updateClock() {
         now.toLocaleDateString(
             "tr-TR",
             {
-                timeZone:
-                    "Europe/Istanbul",
-
+                timeZone: "Europe/Istanbul",
                 weekday: "long",
                 day: "numeric",
                 month: "long",
@@ -1228,19 +1263,17 @@ function updateClock() {
             }
         );
 
-    document
-        .getElementById("clock")
-        .textContent = time;
+    document.getElementById(
+        "clock"
+    ).textContent = time;
 
-    document
-        .getElementById("date")
-        .textContent =
-        date;
+    document.getElementById(
+        "date"
+    ).textContent = date;
 
-    document
-        .getElementById("sectionDate")
-        .textContent =
-        date;
+    document.getElementById(
+        "sectionDate"
+    ).textContent = date;
 
 }
 
@@ -1252,72 +1285,62 @@ setInterval(
 );
 
 
-/* ==================================================
-   SAĞLIK
-================================================== */
+/* =====================================================
+   SAĞLIK DURUMU
+===================================================== */
 
 function setHealth(status) {
 
     data.health = status;
 
-    save();
+    saveData();
 
     render();
 
 }
 
 
-function updateHealth() {
-
-    document
-        .getElementById("goodBtn")
-        .classList.toggle(
-            "active",
-            data.health === "good"
-        );
-
-    document
-        .getElementById("badBtn")
-        .classList.toggle(
-            "active",
-            data.health === "bad"
-        );
-
-}
-
-
-/* ==================================================
+/* =====================================================
    BETASERC
-================================================== */
+===================================================== */
 
 function updateBetaserc() {
 
-    const evening =
+    const eveningRow =
         document.getElementById(
-            "eveningDose"
+            "eveningRow"
         );
 
-    const desc =
+    const eveningButton =
+        document.getElementById(
+            "betasercEvening"
+        );
+
+    const description =
         document.getElementById(
             "betasercDesc"
         );
 
-    if (
-        data.health === "bad"
-    ) {
+    if (data.health === "bad") {
 
-        evening.style.display =
-            "grid";
+        eveningRow.style.display =
+            "flex";
 
-        desc.textContent =
+        eveningButton.style.display =
+            "flex";
+
+        description.textContent =
             "İyi değilsen sabah ve akşam kullan.";
 
     } else {
 
-        evening.style.display =
+        eveningRow.style.display =
             "none";
 
-        desc.textContent =
+        eveningButton.style.display =
+            "none";
+
+        description.textContent =
             "İyiyken sabah kullan.";
 
     }
@@ -1335,14 +1358,11 @@ function updateBetaserc() {
 }
 
 
-/* ==================================================
-   BUTONLAR
-================================================== */
+/* =====================================================
+   BUTON DURUMU
+===================================================== */
 
-function setButton(
-    id,
-    done
-) {
+function setButton(id, done) {
 
     const button =
         document.getElementById(id);
@@ -1362,80 +1382,35 @@ function setButton(
 }
 
 
+/* =====================================================
+   İLAÇ AL
+===================================================== */
+
 function toggleDose(
-    name,
+    medicine,
     button
 ) {
 
-    const before =
-        data.doses[name];
+    const wasDone =
+        data.doses[medicine];
 
-    data.doses[name] =
-        !before;
+    data.doses[medicine] =
+        !wasDone;
 
-    save();
+    saveData();
 
     render();
 
-    if (!before) {
-
-        hearts(
-            button
-        );
-
+    if (!wasDone) {
+        createHearts(button);
     }
 
 }
 
 
-function toggleMedicine(
-    name,
-    button
-) {
-
-    const before =
-        data.doses[name];
-
-    data.doses[name] =
-        !before;
-
-    save();
-
-    render();
-
-    if (!before) {
-
-        hearts(
-            button
-        );
-
-    }
-
-}
-
-
-/* ==================================================
-   DİĞER BUTONLAR
-================================================== */
-
-function updateOtherButtons() {
-
-    setButton(
-        "citoles",
-        data.doses.citoles
-    );
-
-    setButton(
-        "b12",
-        data.doses.b12
-    );
-
-}
-
-
-/* ==================================================
+/* =====================================================
    İLERLEME
-================================================== */
+===================================================== */
 
 function updateProgress() {
 
@@ -1445,6 +1420,18 @@ function updateProgress() {
 
     if (
         data.doses.betasercMorning
+    ) {
+        done++;
+    }
+
+    if (
+        data.doses.citoles
+    ) {
+        done++;
+    }
+
+    if (
+        data.doses.b12
     ) {
         done++;
     }
@@ -1463,33 +1450,17 @@ function updateProgress() {
 
     }
 
-    if (
-        data.doses.citoles
-    ) {
-        done++;
-    }
+    document.getElementById(
+        "progressCount"
+    ).textContent =
+        done + " / " + total;
 
-    if (
-        data.doses.b12
-    ) {
-        done++;
-    }
-
-    document
-        .getElementById(
-            "progressCount"
-        )
-        .textContent =
-        done +
-        " / " +
-        total;
-
-    const heartsBox =
+    const hearts =
         document.getElementById(
             "hearts"
         );
 
-    heartsBox.innerHTML = "";
+    hearts.innerHTML = "";
 
     for (
         let i = 0;
@@ -1497,50 +1468,69 @@ function updateProgress() {
         i++
     ) {
 
-        const span =
+        const heart =
             document.createElement(
                 "span"
             );
 
-        span.className =
+        heart.className =
             "progress-heart";
 
-        span.textContent =
+        heart.textContent =
             i < done
                 ? "♥"
                 : "♡";
 
         if (i < done) {
-
-            span.classList.add(
+            heart.classList.add(
                 "active"
             );
-
         }
 
-        heartsBox.appendChild(
-            span
+        hearts.appendChild(
+            heart
         );
 
     }
 
-    document
-        .getElementById(
-            "complete"
-        )
-        .classList.toggle(
-            "show",
-            done === total
-        );
+    document.getElementById(
+        "complete"
+    ).classList.toggle(
+        "show",
+        done === total
+    );
 
 }
 
 
-/* ==================================================
-   ALINDIĞINDA KALPLER
-================================================== */
+/* =====================================================
+   SAĞLIK BUTONLARI
+===================================================== */
 
-function hearts(button) {
+function updateHealth() {
+
+    document.getElementById(
+        "goodBtn"
+    ).classList.toggle(
+        "active",
+        data.health === "good"
+    );
+
+    document.getElementById(
+        "badBtn"
+    ).classList.toggle(
+        "active",
+        data.health === "bad"
+    );
+
+}
+
+
+/* =====================================================
+   KALPLER
+===================================================== */
+
+function createHearts(button) {
 
     const rect =
         button.getBoundingClientRect();
@@ -1559,15 +1549,15 @@ function hearts(button) {
         i++
     ) {
 
-        const el =
+        const heart =
             document.createElement(
                 "span"
             );
 
-        el.className =
+        heart.className =
             "floating-heart";
 
-        el.textContent =
+        heart.textContent =
             symbols[
                 Math.floor(
                     Math.random() *
@@ -1575,45 +1565,43 @@ function hearts(button) {
                 )
             ];
 
-        el.style.left =
+        heart.style.left =
             (
                 rect.left +
                 rect.width / 2
             ) + "px";
 
-        el.style.top =
+        heart.style.top =
             (
                 rect.top +
                 rect.height / 2
             ) + "px";
 
-        el.style.setProperty(
+        heart.style.setProperty(
             "--moveX",
             (
-                Math.random() * 90 -
-                45
+                Math.random() * 80 - 40
             ) + "px"
         );
 
-        el.style.setProperty(
+        heart.style.setProperty(
             "--rotate",
             (
-                Math.random() * 60 -
-                30
+                Math.random() * 50 - 25
             ) + "deg"
         );
 
-        el.style.animationDelay =
+        heart.style.animationDelay =
             (
                 Math.random() * .12
             ) + "s";
 
         document.body.appendChild(
-            el
+            heart
         );
 
         setTimeout(
-            () => el.remove(),
+            () => heart.remove(),
             1300
         );
 
@@ -1622,24 +1610,21 @@ function hearts(button) {
 }
 
 
-/* ==================================================
+/* =====================================================
    SIFIRLA
-================================================== */
+===================================================== */
 
 function resetToday() {
 
-    if (
-        !confirm(
+    const answer =
+        confirm(
             "Bugünün kayıtları sıfırlansın mı?"
-        )
-    ) {
+        );
 
-        return;
-
-    }
+    if (!answer) return;
 
     localStorage.removeItem(
-        key()
+        storageKey()
     );
 
     data =
@@ -1647,55 +1632,12 @@ function resetToday() {
 
     render();
 
-    showToast(
-        "Bugün sıfırlandı."
-    );
-
 }
 
 
-/* ==================================================
-   TOAST
-================================================== */
-
-let toastTimer;
-
-function showToast(text) {
-
-    const toast =
-        document.getElementById(
-            "toast"
-        );
-
-    toast.textContent =
-        text;
-
-    toast.classList.add(
-        "show"
-    );
-
-    clearTimeout(
-        toastTimer
-    );
-
-    toastTimer =
-        setTimeout(
-            () => {
-
-                toast.classList.remove(
-                    "show"
-                );
-
-            },
-            1700
-        );
-
-}
-
-
-/* ==================================================
+/* =====================================================
    YENİ GÜN KONTROLÜ
-================================================== */
+===================================================== */
 
 let currentDay =
     turkeyDate();
@@ -1725,9 +1667,9 @@ setInterval(
 );
 
 
-/* ==================================================
+/* =====================================================
    RENDER
-================================================== */
+===================================================== */
 
 function render() {
 
@@ -1735,7 +1677,15 @@ function render() {
 
     updateBetaserc();
 
-    updateOtherButtons();
+    setButton(
+        "citoles",
+        data.doses.citoles
+    );
+
+    setButton(
+        "b12",
+        data.doses.b12
+    );
 
     updateProgress();
 

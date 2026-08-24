@@ -1,106 +1,149 @@
 <!DOCTYPE html>
 <html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>İlaç Hatırlatıcım 💊</title>
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <meta
+    name="theme-color"
+    content="#f6aebe"
+  >
+
+  <meta
+    name="apple-mobile-web-app-capable"
+    content="yes"
+  >
+
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="default"
+  >
+
+  <meta
+    name="apple-mobile-web-app-title"
+    content="Esila 💗"
+  >
+
+  <title>Esila'nın İlaç Hatırlatıcısı 💗</title>
+
 
   <style>
 
+    /* ==================================================
+       TEMEL
+       ================================================== */
+
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --bg: #f4f7fb;
-      --card: rgba(255,255,255,.90);
-      --text: #172033;
-      --muted: #687386;
-
-      --primary: #6c63ff;
-      --primary-dark: #554be8;
-
-      --green: #18b77a;
-      --orange: #ff9f43;
-      --red: #ef476f;
-
-      --border: rgba(20,30,60,.08);
-
-      --shadow:
-        0 15px 40px rgba(36, 50, 80, .10);
+      -webkit-tap-highlight-color: transparent;
     }
 
 
-    body.dark {
-
-      --bg: #10131c;
-      --card: rgba(26,31,45,.94);
-      --text: #f5f7ff;
-      --muted: #9ba5b7;
-
-      --border: rgba(255,255,255,.08);
-
-      --shadow:
-        0 15px 40px rgba(0,0,0,.30);
+    html {
+      min-height: 100%;
+      background: #fff7fa;
     }
 
 
     body {
 
+      margin: 0;
+
+      min-height: 100vh;
+      min-height: 100svh;
+
       font-family:
         -apple-system,
         BlinkMacSystemFont,
+        "SF Pro Display",
+        "SF Pro Text",
         "Segoe UI",
         Roboto,
         Arial,
         sans-serif;
 
       background:
-
         radial-gradient(
-          circle at top left,
-          rgba(108,99,255,.18),
-          transparent 30%
+          circle at 0% 0%,
+          rgba(246, 174, 190, .22),
+          transparent 35%
         ),
 
         radial-gradient(
-          circle at bottom right,
-          rgba(24,183,122,.12),
-          transparent 30%
+          circle at 100% 100%,
+          rgba(255, 220, 228, .32),
+          transparent 38%
         ),
 
-        var(--bg);
+        #fff7fa;
 
-      color: var(--text);
+      color: #422d35;
 
-      min-height: 100vh;
+      transition:
+        background .3s ease,
+        color .3s ease;
 
-      transition: .3s;
+      overscroll-behavior-y: none;
     }
 
 
-    .container {
+    body.dark {
 
-      width: min(
-        920px,
-        calc(100% - 30px)
-      );
+      background:
+        radial-gradient(
+          circle at 0% 0%,
+          rgba(185, 103, 127, .18),
+          transparent 35%
+        ),
 
-      margin: auto;
+        #191316;
+
+      color: #fff2f5;
+    }
+
+
+    button {
+
+      font-family: inherit;
+
+      touch-action: manipulation;
+
+      -webkit-appearance: none;
+
+      appearance: none;
+    }
+
+
+    .app {
+
+      width: 100%;
+
+      max-width: 720px;
+
+      margin: 0 auto;
 
       padding:
-        25px
-        0
-        60px;
+
+        max(16px, env(safe-area-inset-top))
+
+        16px
+
+        max(28px, env(safe-area-inset-bottom));
     }
 
 
-    /* HEADER */
 
-    header {
+    /* ==================================================
+       HEADER
+       ================================================== */
+
+    .header {
 
       display: flex;
 
@@ -108,7 +151,9 @@
 
       justify-content: space-between;
 
-      margin-bottom: 20px;
+      gap: 12px;
+
+      padding: 8px 0 16px;
     }
 
 
@@ -118,385 +163,19 @@
 
       align-items: center;
 
-      gap: 13px;
+      gap: 11px;
+
+      min-width: 0;
     }
 
 
     .logo {
 
-      width: 52px;
-      height: 52px;
+      width: 48px;
 
-      border-radius: 17px;
+      height: 48px;
 
-      display: grid;
-
-      place-items: center;
-
-      background:
-        linear-gradient(
-          135deg,
-          #7168ff,
-          #9a70ff
-        );
-
-      color: white;
-
-      font-size: 27px;
-
-      box-shadow:
-        0 10px 25px
-        rgba(108,99,255,.30);
-    }
-
-
-    h1 {
-
-      font-size: 25px;
-
-      letter-spacing: -.5px;
-    }
-
-
-    .subtitle {
-
-      color: var(--muted);
-
-      font-size: 14px;
-
-      margin-top: 3px;
-    }
-
-
-    .theme-btn {
-
-      width: 45px;
-      height: 45px;
-
-      border:
-        1px solid
-        var(--border);
-
-      background:
-        var(--card);
-
-      color: var(--text);
-
-      border-radius: 14px;
-
-      cursor: pointer;
-
-      font-size: 20px;
-
-      box-shadow:
-        var(--shadow);
-    }
-
-
-    /* CANLI SAAT */
-
-    .live-date {
-
-      text-align: center;
-
-      margin:
-        15px
-        0
-        22px;
-
-      padding:
-        25px
-        15px;
-
-      background:
-        var(--card);
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius: 25px;
-
-      box-shadow:
-        var(--shadow);
-
-      backdrop-filter:
-        blur(15px);
-    }
-
-
-    .live-time {
-
-      font-size:
-        clamp(
-          40px,
-          10vw,
-          65px
-        );
-
-      font-weight: 850;
-
-      letter-spacing: 2px;
-
-      color:
-        var(--primary);
-
-      line-height: 1;
-    }
-
-
-    .live-date-text {
-
-      margin-top: 11px;
-
-      font-size: 17px;
-
-      font-weight: 650;
-
-      color: var(--text);
-    }
-
-
-    .live-location {
-
-      margin-top: 7px;
-
-      color: var(--muted);
-
-      font-size: 13px;
-    }
-
-
-    /* HERO */
-
-    .hero {
-
-      background:
-        linear-gradient(
-          135deg,
-          #6258f5,
-          #8c63ff
-        );
-
-      color: white;
-
-      padding: 27px;
-
-      border-radius: 27px;
-
-      margin-bottom: 22px;
-
-      box-shadow:
-        0 20px 45px
-        rgba(98,88,245,.25);
-
-      position: relative;
-
-      overflow: hidden;
-    }
-
-
-    .hero::after {
-
-      content: "💊";
-
-      position: absolute;
-
-      right: 25px;
-
-      bottom: -20px;
-
-      font-size: 105px;
-
-      opacity: .12;
-
-      transform:
-        rotate(-15deg);
-    }
-
-
-    .hero-small {
-
-      opacity: .85;
-
-      font-size: 14px;
-
-      margin-bottom: 8px;
-    }
-
-
-    .hero h2 {
-
-      font-size: 28px;
-
-      margin-bottom: 7px;
-    }
-
-
-    .hero p {
-
-      opacity: .88;
-
-      font-size: 15px;
-
-      max-width: 620px;
-
-      line-height: 1.5;
-    }
-
-
-    /* SAĞLIK DURUMU */
-
-    .status-box {
-
-      margin-top: 20px;
-
-      background:
-        rgba(255,255,255,.13);
-
-      border:
-        1px solid
-        rgba(255,255,255,.17);
-
-      padding: 15px;
-
-      border-radius: 17px;
-    }
-
-
-    .status-title {
-
-      font-size: 13px;
-
-      opacity: .8;
-
-      margin-bottom: 10px;
-    }
-
-
-    .status-buttons {
-
-      display: flex;
-
-      gap: 10px;
-
-      flex-wrap: wrap;
-    }
-
-
-    .status-btn {
-
-      border: 0;
-
-      padding:
-        11px
-        16px;
-
-      border-radius: 12px;
-
-      cursor: pointer;
-
-      background:
-        rgba(255,255,255,.15);
-
-      color: white;
-
-      font-weight: 600;
-    }
-
-
-    .status-btn.active {
-
-      background: white;
-
-      color: #5e55ed;
-    }
-
-
-    /* BAŞLIK */
-
-    .section-title {
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      margin:
-        25px
-        3px
-        13px;
-    }
-
-
-    .section-title h3 {
-
-      font-size: 18px;
-    }
-
-
-    .date {
-
-      color: var(--muted);
-
-      font-size: 13px;
-    }
-
-
-    /* İLAÇLAR */
-
-    .med-list {
-
-      display: grid;
-
-      gap: 13px;
-    }
-
-
-    .med-card {
-
-      background:
-        var(--card);
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius: 21px;
-
-      padding: 18px;
-
-      box-shadow:
-        var(--shadow);
-
-      backdrop-filter:
-        blur(15px);
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 15px;
-
-      transition: .2s;
-    }
-
-
-    .med-card:hover {
-
-      transform:
-        translateY(-2px);
-    }
-
-
-    .med-icon {
-
-      min-width: 53px;
-
-      width: 53px;
-
-      height: 53px;
+      flex: 0 0 48px;
 
       display: grid;
 
@@ -504,136 +183,733 @@
 
       border-radius: 16px;
 
-      font-size: 25px;
+      background:
+        linear-gradient(
+          145deg,
+          #e99bad,
+          #f4bdca
+        );
+
+      box-shadow:
+        0 8px 20px
+        rgba(218, 126, 150, .20);
+
+      font-size: 24px;
     }
 
 
-    .purple {
+    .brand-text {
+
+      min-width: 0;
+    }
+
+
+    .brand-title {
+
+      font-size: 20px;
+
+      line-height: 1.15;
+
+      font-weight: 800;
+
+      letter-spacing: -.4px;
+    }
+
+
+    .brand-subtitle {
+
+      margin-top: 4px;
+
+      font-size: 12px;
+
+      color: #977681;
+    }
+
+
+    body.dark .brand-subtitle {
+      color: #bda7ae;
+    }
+
+
+    .theme-button {
+
+      width: 44px;
+
+      height: 44px;
+
+      flex: 0 0 44px;
+
+      border: 1px solid
+        rgba(200, 110, 135, .12);
+
+      border-radius: 14px;
 
       background:
-        rgba(108,99,255,.13);
-    }
+        rgba(255,255,255,.82);
 
+      color: #53333e;
 
-    .green {
-
-      background:
-        rgba(24,183,122,.13);
-    }
-
-
-    .orange {
-
-      background:
-        rgba(255,159,67,.14);
-    }
-
-
-    .med-info {
-
-      flex: 1;
-    }
-
-
-    .med-name {
-
-      font-size: 17px;
-
-      font-weight: 750;
-
-      margin-bottom: 5px;
-    }
-
-
-    .med-desc {
-
-      color: var(--muted);
-
-      font-size: 13px;
-
-      line-height: 1.45;
-    }
-
-
-    .med-time {
-
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 5px;
-
-      margin-top: 8px;
-
-      color: var(--primary);
-
-      font-size: 13px;
-
-      font-weight: 700;
-    }
-
-
-    .take-btn {
-
-      border: 0;
-
-      border-radius: 13px;
-
-      padding:
-        11px
-        14px;
-
-      background:
-        var(--primary);
-
-      color: white;
+      font-size: 19px;
 
       cursor: pointer;
 
-      font-weight: 700;
-
-      white-space: nowrap;
-
-      transition: .2s;
+      box-shadow:
+        0 8px 22px
+        rgba(190, 110, 135, .10);
     }
 
 
-    .take-btn:hover {
+    body.dark .theme-button {
 
       background:
-        var(--primary-dark);
+        rgba(45, 34, 40, .95);
 
-      transform:
-        scale(1.03);
+      color: white;
+
+      border-color:
+        rgba(255,255,255,.08);
     }
 
 
-    .take-btn.done {
+
+    /* ==================================================
+       SAAT
+       ================================================== */
+
+    .clock-card {
+
+      text-align: center;
+
+      padding: 23px 15px;
+
+      margin-bottom: 16px;
+
+      border-radius: 25px;
 
       background:
-        var(--green);
-    }
-
-
-    /* İLERLEME */
-
-    .progress-card {
-
-      margin-top: 22px;
-
-      padding: 20px;
-
-      background:
-        var(--card);
+        rgba(255,255,255,.78);
 
       border:
         1px solid
-        var(--border);
-
-      border-radius: 21px;
+        rgba(210, 120, 145, .10);
 
       box-shadow:
-        var(--shadow);
+        0 14px 35px
+        rgba(190, 110, 135, .10);
+
+      backdrop-filter: blur(18px);
+
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+
+    body.dark .clock-card {
+
+      background:
+        rgba(38, 28, 34, .90);
+
+      border-color:
+        rgba(255,255,255,.07);
+    }
+
+
+    .clock {
+
+      font-size:
+        clamp(42px, 14vw, 66px);
+
+      line-height: 1;
+
+      font-weight: 850;
+
+      letter-spacing: 1px;
+
+      color: #df8ea4;
+
+      font-variant-numeric:
+        tabular-nums;
+    }
+
+
+    .date-text {
+
+      margin-top: 10px;
+
+      font-size: 15px;
+
+      line-height: 1.35;
+
+      font-weight: 700;
+    }
+
+
+    .country {
+
+      margin-top: 6px;
+
+      font-size: 12px;
+
+      color: #997781;
+    }
+
+
+    body.dark .country {
+      color: #bca6ae;
+    }
+
+
+
+    /* ==================================================
+       HERO
+       ================================================== */
+
+    .hero {
+
+      position: relative;
+
+      overflow: hidden;
+
+      padding: 23px;
+
+      margin-bottom: 18px;
+
+      border-radius: 26px;
+
+      background:
+        linear-gradient(
+          140deg,
+          #e69aaa 0%,
+          #f1b5c4 100%
+        );
+
+      color: white;
+
+      box-shadow:
+        0 18px 40px
+        rgba(215, 126, 150, .22);
+    }
+
+
+    .hero::after {
+
+      content: "💗";
+
+      position: absolute;
+
+      right: -8px;
+
+      bottom: -28px;
+
+      font-size: 100px;
+
+      opacity: .13;
+
+      transform: rotate(-12deg);
+
+      pointer-events: none;
+    }
+
+
+    .hero-small {
+
+      position: relative;
+
+      z-index: 1;
+
+      font-size: 12px;
+
+      opacity: .88;
+
+      margin-bottom: 7px;
+    }
+
+
+    .hero-title {
+
+      position: relative;
+
+      z-index: 1;
+
+      font-size: 25px;
+
+      line-height: 1.15;
+
+      margin: 0 0 8px;
+
+      letter-spacing: -.5px;
+    }
+
+
+    .hero-description {
+
+      position: relative;
+
+      z-index: 1;
+
+      max-width: 550px;
+
+      margin: 0;
+
+      font-size: 13px;
+
+      line-height: 1.55;
+
+      opacity: .92;
+    }
+
+
+
+    /* ==================================================
+       DURUM SEÇİMİ
+       ================================================== */
+
+    .health-box {
+
+      position: relative;
+
+      z-index: 2;
+
+      margin-top: 18px;
+
+      padding: 14px;
+
+      border-radius: 17px;
+
+      background:
+        rgba(255,255,255,.15);
+
+      border:
+        1px solid
+        rgba(255,255,255,.22);
+    }
+
+
+    .health-title {
+
+      font-size: 12px;
+
+      font-weight: 650;
+
+      margin-bottom: 10px;
+
+      opacity: .92;
+    }
+
+
+    .health-buttons {
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 9px;
+    }
+
+
+    .health-button {
+
+      min-height: 45px;
+
+      border: 0;
+
+      border-radius: 12px;
+
+      background:
+        rgba(255,255,255,.16);
+
+      color: white;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      cursor: pointer;
+    }
+
+
+    .health-button.active {
+
+      background: white;
+
+      color: #d17f96;
+
+      box-shadow:
+        0 5px 15px
+        rgba(120,50,70,.08);
+    }
+
+
+
+    /* ==================================================
+       BÖLÜM BAŞLIĞI
+       ================================================== */
+
+    .section-header {
+
+      display: flex;
+
+      align-items: flex-end;
+
+      justify-content: space-between;
+
+      gap: 12px;
+
+      margin:
+        22px
+        3px
+        11px;
+    }
+
+
+    .section-title {
+
+      font-size: 17px;
+
+      font-weight: 800;
+
+      letter-spacing: -.2px;
+    }
+
+
+    .today-label {
+
+      flex: 0 0 auto;
+
+      font-size: 11px;
+
+      color: #9b7883;
+
+      text-align: right;
+    }
+
+
+    body.dark .today-label {
+      color: #bda6ae;
+    }
+
+
+
+    /* ==================================================
+       İLAÇ KARTI
+       ================================================== */
+
+    .medicine-list {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 11px;
+    }
+
+
+    .medicine-card {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      padding: 14px;
+
+      border-radius: 20px;
+
+      background:
+        rgba(255,255,255,.86);
+
+      border:
+        1px solid
+        rgba(210, 120, 145, .10);
+
+      box-shadow:
+        0 11px 28px
+        rgba(190, 110, 135, .09);
+
+      min-width: 0;
+    }
+
+
+    body.dark .medicine-card {
+
+      background:
+        rgba(39,29,35,.94);
+
+      border-color:
+        rgba(255,255,255,.07);
+    }
+
+
+    .medicine-icon {
+
+      width: 47px;
+
+      height: 47px;
+
+      flex: 0 0 47px;
+
+      display: grid;
+
+      place-items: center;
+
+      border-radius: 15px;
+
+      font-size: 21px;
+    }
+
+
+    .icon-pink {
+
+      background:
+        rgba(232,154,174,.14);
+    }
+
+
+    .icon-green {
+
+      background:
+        rgba(100,190,150,.13);
+    }
+
+
+    .icon-orange {
+
+      background:
+        rgba(238,181,109,.14);
+    }
+
+
+    .medicine-info {
+
+      flex: 1;
+
+      min-width: 0;
+    }
+
+
+    .medicine-name {
+
+      font-size: 15px;
+
+      line-height: 1.2;
+
+      font-weight: 800;
+
+      margin-bottom: 4px;
+    }
+
+
+    .medicine-description {
+
+      font-size: 12px;
+
+      line-height: 1.45;
+
+      color: #96747f;
+    }
+
+
+    body.dark .medicine-description {
+      color: #bca5ad;
+    }
+
+
+    .medicine-time {
+
+      display: inline-flex;
+
+      margin-top: 6px;
+
+      padding: 4px 8px;
+
+      border-radius: 8px;
+
+      background:
+        rgba(232,154,174,.10);
+
+      color: #d08096;
+
+      font-size: 11px;
+
+      font-weight: 750;
+    }
+
+
+    body.dark .medicine-time {
+
+      background:
+        rgba(232,154,174,.12);
+
+      color: #e7a1b2;
+    }
+
+
+    .take-button {
+
+      min-width: 76px;
+
+      min-height: 43px;
+
+      flex: 0 0 auto;
+
+      border: 0;
+
+      border-radius: 12px;
+
+      padding:
+        8px 10px;
+
+      background:
+        #e89aae;
+
+      color: white;
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      cursor: pointer;
+
+      transition:
+        transform .15s ease,
+        background .15s ease;
+    }
+
+
+    .take-button:active {
+
+      transform:
+        scale(.96);
+    }
+
+
+    .take-button.done {
+
+      background:
+        #65bb91;
+    }
+
+
+
+    /* ==================================================
+       BETASERC DOZLARI
+       ================================================== */
+
+    .dose-list {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 7px;
+
+      margin-top: 8px;
+    }
+
+
+    .dose-row {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 10px;
+
+      padding:
+        8px 9px;
+
+      border-radius: 11px;
+
+      background:
+        rgba(232,154,174,.07);
+    }
+
+
+    .dose-name {
+
+      min-width: 0;
+
+      font-size: 11px;
+
+      color: #8f6d78;
+
+      font-weight: 700;
+    }
+
+
+    body.dark .dose-name {
+      color: #bca3ac;
+    }
+
+
+    .dose-button {
+
+      min-width: 68px;
+
+      min-height: 34px;
+
+      border: 0;
+
+      border-radius: 9px;
+
+      padding:
+        6px 8px;
+
+      background:
+        #e89aae;
+
+      color: white;
+
+      font-size: 10px;
+
+      font-weight: 800;
+
+      cursor: pointer;
+    }
+
+
+    .dose-button.done {
+
+      background:
+        #65bb91;
+    }
+
+
+
+    /* ==================================================
+       İLERLEME
+       ================================================== */
+
+    .progress-card {
+
+      margin-top: 14px;
+
+      padding: 17px;
+
+      border-radius: 19px;
+
+      background:
+        rgba(255,255,255,.84);
+
+      border:
+        1px solid
+        rgba(210,120,145,.10);
+
+      box-shadow:
+        0 11px 28px
+        rgba(190,110,135,.08);
+    }
+
+
+    body.dark .progress-card {
+
+      background:
+        rgba(39,29,35,.94);
+
+      border-color:
+        rgba(255,255,255,.07);
     }
 
 
@@ -643,416 +919,352 @@
 
       justify-content: space-between;
 
-      margin-bottom: 12px;
+      align-items: center;
+
+      margin-bottom: 10px;
+
+      font-size: 13px;
+
+      font-weight: 700;
     }
 
 
     .progress-number {
 
       color:
-        var(--primary);
+        #d47f96;
 
-      font-weight: 800;
+      font-weight: 850;
     }
 
 
     .progress {
 
-      height: 11px;
+      height: 9px;
 
-      background:
-        rgba(120,130,150,.14);
+      overflow: hidden;
 
       border-radius: 20px;
 
-      overflow: hidden;
+      background:
+        rgba(180,120,140,.12);
     }
 
 
     .progress-bar {
 
+      width: 0%;
+
       height: 100%;
 
-      width: 0%;
+      border-radius: inherit;
 
       background:
         linear-gradient(
           90deg,
-          #6c63ff,
-          #18b77a
+          #e89aae,
+          #70c59c
         );
 
-      border-radius: 20px;
-
-      transition: .4s;
+      transition:
+        width .35s ease;
     }
 
 
-    /* BİLGİ */
 
-    .info {
+    /* ==================================================
+       TAMAMLANDI
+       ================================================== */
 
-      margin-top: 22px;
+    .success-message {
 
-      padding: 17px;
-
-      border-radius: 18px;
-
-      background:
-        rgba(255,159,67,.09);
-
-      border:
-        1px solid
-        rgba(255,159,67,.18);
-
-      color:
-        var(--muted);
-
-      font-size: 13px;
-
-      line-height: 1.55;
-    }
-
-
-    .info strong {
-
-      color:
-        var(--text);
-    }
-
-
-    /* FOOTER */
-
-    footer {
-
-      text-align: center;
-
-      color:
-        var(--muted);
-
-      font-size: 12px;
-
-      margin-top: 30px;
-    }
-
-
-    /* BİLDİRİM */
-
-    .notification {
-
-      position: fixed;
-
-      left: 50%;
-
-      bottom: 25px;
-
-      transform:
-        translate(
-          -50%,
-          150px
-        );
-
-      width:
-        min(
-          430px,
-          calc(100% - 30px)
-        );
-
-      background:
-        var(--card);
-
-      color:
-        var(--text);
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius: 22px;
-
-      padding: 18px;
-
-      box-shadow:
-        0 20px 50px
-        rgba(0,0,0,.22);
-
-      z-index: 1000;
-
-      transition: .4s;
-
-      backdrop-filter:
-        blur(20px);
-    }
-
-
-    .notification.show {
-
-      transform:
-        translate(
-          -50%,
-          0
-        );
-    }
-
-
-    .notification-title {
-
-      font-weight: 800;
-
-      margin-bottom: 5px;
-
-      font-size: 16px;
-    }
-
-
-    .notification-text {
-
-      color:
-        var(--muted);
-
-      font-size: 13px;
-
-      line-height: 1.45;
-    }
-
-
-    .notification-close {
+      display: none;
 
       margin-top: 12px;
 
-      border: 0;
+      padding: 13px;
+
+      border-radius: 15px;
+
+      text-align: center;
 
       background:
-        var(--primary);
+        rgba(101,187,145,.10);
 
-      color: white;
+      color:
+        #4a9d76;
 
-      padding:
-        9px
-        14px;
+      font-size: 12px;
 
-      border-radius: 10px;
-
-      cursor: pointer;
-
-      font-weight: 700;
+      font-weight: 750;
     }
 
 
-    /* MOBİL */
+    .success-message.show {
 
-    @media (max-width: 600px) {
+      display: block;
 
-      .container {
+      animation:
+        pop .25s ease;
+    }
 
-        width:
-          calc(100% - 20px);
 
-        padding-top: 15px;
+    @keyframes pop {
+
+      from {
+        transform: scale(.98);
+        opacity: .5;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+
+
+    /* ==================================================
+       FOOTER
+       ================================================== */
+
+    .footer {
+
+      text-align: center;
+
+      margin-top: 25px;
+
+      padding-bottom: 8px;
+
+      color: #a17f89;
+
+      font-size: 12px;
+
+      font-weight: 600;
+    }
+
+
+    body.dark .footer {
+      color: #bca6ae;
+    }
+
+
+
+    /* ==================================================
+       ÇOK KÜÇÜK iPHONE EKRANLARI
+       ================================================== */
+
+    @media (max-width: 380px) {
+
+      .app {
+
+        padding-left: 12px;
+
+        padding-right: 12px;
       }
 
 
-      .hero {
+      .medicine-card {
 
-        padding: 22px;
+        gap: 9px;
 
-        border-radius: 23px;
+        padding: 11px;
       }
 
 
-      .hero h2 {
+      .medicine-icon {
 
-        font-size: 23px;
+        width: 43px;
+
+        height: 43px;
+
+        flex-basis: 43px;
+
+        font-size: 19px;
       }
 
 
-      .med-card {
+      .take-button {
 
-        padding: 14px;
+        min-width: 69px;
+
+        font-size: 11px;
       }
 
 
-      .med-icon {
+      .medicine-name {
 
-        min-width: 45px;
-
-        width: 45px;
-
-        height: 45px;
-
-        font-size: 21px;
+        font-size: 14px;
       }
 
 
-      .med-name {
+      .medicine-description {
 
-        font-size: 15px;
+        font-size: 11px;
       }
 
-
-      .take-btn {
-
-        padding:
-          9px
-          10px;
-
-        font-size: 12px;
-      }
+    }
 
 
-      .live-date {
 
-        padding:
-          22px
-          10px;
+    /* ==================================================
+       TABLET / BÜYÜK EKRAN
+       ================================================== */
+
+    @media (min-width: 721px) {
+
+      .app {
+
+        padding-top: 30px;
       }
 
     }
 
   </style>
+
 </head>
+
 
 
 <body>
 
 
-<div class="container">
+<div class="app">
 
 
-  <!-- HEADER -->
+  <!-- ================================================
+       HEADER
+       ================================================ -->
 
-  <header>
+  <header class="header">
+
 
     <div class="brand">
+
 
       <div class="logo">
         💊
       </div>
 
-      <div>
 
-        <h1>
+      <div class="brand-text">
+
+        <div class="brand-title">
           İlaç Hatırlatıcım
-        </h1>
+        </div>
 
-        <div class="subtitle">
-          Bugün kendine iyi bak 🌿
+        <div class="brand-subtitle">
+          Esila için hazırlanmıştır 🌸
         </div>
 
       </div>
+
 
     </div>
 
 
     <button
-      class="theme-btn"
+      class="theme-button"
+      id="themeButton"
       onclick="toggleTheme()"
-      id="themeBtn"
+      aria-label="Tema değiştir"
     >
       🌙
     </button>
+
 
   </header>
 
 
 
-  <!-- TÜRKİYE SAATİ -->
+  <!-- ================================================
+       TÜRKİYE SAATİ
+       ================================================ -->
 
-  <div class="live-date">
+  <section class="clock-card">
+
 
     <div
-      class="live-time"
-      id="liveTime"
+      class="clock"
+      id="liveClock"
     >
       00:00:00
     </div>
 
 
     <div
-      class="live-date-text"
+      class="date-text"
       id="liveDate"
     >
       Pazartesi, 24 Ağustos 2026
     </div>
 
 
-    <div class="live-location">
+    <div class="country">
       🇹🇷 Türkiye
     </div>
 
-  </div>
+
+  </section>
 
 
 
-  <!-- HERO -->
+  <!-- ================================================
+       KARŞILAMA
+       ================================================ -->
 
   <section class="hero">
 
 
-    <div
-      class="hero-small"
-      id="todayText"
-    >
-      Bugünün ilaç planı
+    <div class="hero-small">
+      Bugünün planı
     </div>
 
 
-    <h2>
-      İlaçlarını unutma 💜
-    </h2>
+    <h1 class="hero-title">
+      İlaçlarını unutma 💗
+    </h1>
 
 
-    <p>
-
-      Zamanı geldiğinde sana
-      hatırlatacağız.
-
-      Bugünkü ilaçlarını takip etmek
-      için aşağıdaki kartları kullanabilirsin.
-
+    <p class="hero-description">
+      Bugünkü ilaçlarını aşağıdan takip edebilirsin.
+      Aldığın dozları işaretlediğinde kayıtlı kalır.
     </p>
-
 
 
     <!-- SAĞLIK DURUMU -->
 
-    <div class="status-box">
+    <div class="health-box">
 
 
-      <div class="status-title">
-
-        Betaserc için bugün
-        kendini nasıl hissediyorsun?
-
+      <div class="health-title">
+        Bugün kendini nasıl hissediyorsun?
       </div>
 
 
-      <div class="status-buttons">
+      <div class="health-buttons">
 
 
         <button
-          class="status-btn active"
-          id="goodBtn"
+          class="health-button"
+          id="goodButton"
           onclick="setHealth('good')"
         >
-
           😊 İyiyim
-
         </button>
 
 
         <button
-          class="status-btn"
-          id="badBtn"
+          class="health-button"
+          id="badButton"
           onclick="setHealth('bad')"
         >
-
           😕 İyi değilim
-
         </button>
 
 
       </div>
+
 
     </div>
 
@@ -1061,103 +1273,153 @@
 
 
 
-  <!-- İLAÇ BAŞLIĞI -->
+  <!-- ================================================
+       İLAÇLAR
+       ================================================ -->
 
-  <div class="section-title">
+  <div class="section-header">
 
-    <h3>
+
+    <div class="section-title">
       💊 Bugünkü ilaçların
-    </h3>
+    </div>
 
 
-    <span
-      class="date"
-      id="dateText"
-    ></span>
+    <div
+      class="today-label"
+      id="todayLabel"
+    >
+    </div>
+
 
   </div>
 
 
 
-  <!-- İLAÇ LİSTESİ -->
-
-  <div class="med-list">
+  <div class="medicine-list">
 
 
-    <!-- BETASERC -->
 
-    <div class="med-card">
+    <!-- ============================================
+         BETASERC
+         ============================================ -->
+
+    <article class="medicine-card">
 
 
-      <div class="med-icon purple">
-        💜
+      <div class="medicine-icon icon-pink">
+        💗
       </div>
 
 
-      <div class="med-info">
+      <div class="medicine-info">
 
 
-        <div class="med-name">
+        <div class="medicine-name">
           Betaserc
         </div>
 
 
         <div
-          class="med-desc"
-          id="betasercDesc"
+          class="medicine-description"
+          id="betasercDescription"
         >
-          İyiyken sabah 1 defa.
+          İyiyken sabah kullan.
         </div>
 
 
+        <!-- SABAH DOZU -->
+
         <div
-          class="med-time"
-          id="betasercTime"
+          class="dose-list"
+          id="betasercDoses"
         >
-          ⏰ 09:00
+
+
+          <div class="dose-row">
+
+
+            <div class="dose-name">
+              🌅 Sabah · 09:00
+            </div>
+
+
+            <button
+              class="dose-button"
+              id="betasercMorning"
+              onclick="toggleDose('betasercMorning')"
+            >
+              Aldım
+            </button>
+
+
+          </div>
+
+
+          <!-- AKŞAM DOZU
+               SADECE İYİ DEĞİLİMDE GÖRÜNÜR -->
+
+          <div
+            class="dose-row"
+            id="betasercEveningRow"
+            style="display:none;"
+          >
+
+
+            <div class="dose-name">
+              🌙 Akşam · 21:00
+            </div>
+
+
+            <button
+              class="dose-button"
+              id="betasercEvening"
+              onclick="toggleDose('betasercEvening')"
+            >
+              Aldım
+            </button>
+
+
+          </div>
+
+
         </div>
 
 
       </div>
 
 
-      <button
-        class="take-btn"
-        onclick="takeMedicine('betaserc', this)"
-      >
-        Aldım
-      </button>
-
-
-    </div>
+    </article>
 
 
 
-    <!-- CITOLES -->
+    <!-- ============================================
+         CITOLES
+         ============================================ -->
 
-    <div class="med-card">
+    <article class="medicine-card">
 
 
-      <div class="med-icon green">
+      <div class="medicine-icon icon-green">
         🌿
       </div>
 
 
-      <div class="med-info">
+      <div class="medicine-info">
 
 
-        <div class="med-name">
+        <div class="medicine-name">
           Citoles
         </div>
 
 
-        <div class="med-desc">
+        <div class="medicine-description">
           Sabah kullanmayı unutma.
         </div>
 
 
-        <div class="med-time">
-          ⏰ 09:00
+        <div class="medicine-time">
+          ⏰ Sabah · 09:00
         </div>
 
 
@@ -1165,46 +1427,45 @@
 
 
       <button
-        class="take-btn"
-        onclick="takeMedicine('citoles', this)"
+        class="take-button"
+        id="citolesButton"
+        onclick="toggleMedicine('citoles')"
       >
         Aldım
       </button>
 
 
-    </div>
+    </article>
 
 
 
-    <!-- B12 -->
+    <!-- ============================================
+         B12
+         ============================================ -->
 
-    <div class="med-card">
+    <article class="medicine-card">
 
 
-      <div class="med-icon orange">
+      <div class="medicine-icon icon-orange">
         ⚡
       </div>
 
 
-      <div class="med-info">
+      <div class="medicine-info">
 
 
-        <div class="med-name">
+        <div class="medicine-name">
           B12
         </div>
 
 
-        <div class="med-desc">
-
-          Doktorunun verdiği B12
-          ilacını tok karnına
-          günde 1 defa kullan.
-
+        <div class="medicine-description">
+          Tok karnına günde 1 defa.
         </div>
 
 
-        <div class="med-time">
-          🍽️ Tok karnına · ⏰ 09:00
+        <div class="medicine-time">
+          🍽️ Tok karnına · 09:00
         </div>
 
 
@@ -1212,23 +1473,26 @@
 
 
       <button
-        class="take-btn"
-        onclick="takeMedicine('b12', this)"
+        class="take-button"
+        id="b12Button"
+        onclick="toggleMedicine('b12')"
       >
         Aldım
       </button>
 
 
-    </div>
+    </article>
 
 
   </div>
 
 
 
-  <!-- İLERLEME -->
+  <!-- ================================================
+       İLERLEME
+       ================================================ -->
 
-  <div class="progress-card">
+  <section class="progress-card">
 
 
     <div class="progress-top">
@@ -1252,82 +1516,37 @@
 
     <div class="progress">
 
+
       <div
         class="progress-bar"
         id="progressBar"
       ></div>
 
+
     </div>
 
 
-  </div>
+    <div
+      class="success-message"
+      id="successMessage"
+    >
+      💗 Bugünkü ilaç planı tamamlandı!
+    </div>
+
+
+  </section>
 
 
 
-  <!-- BİLGİ -->
+  <!-- ================================================
+       FOOTER
+       ================================================ -->
 
-  <div class="info">
+  <footer class="footer">
 
-    <strong>
-      ℹ️ Küçük bir hatırlatma:
-    </strong>
-
-    <br>
-
-    Bu site yalnızca ilaçları
-    zamanında hatırlatmak amacıyla
-    hazırlanmıştır.
-
-    İlaçların adı, dozu ve kullanım
-    şekli konusunda doktorunun ve
-    eczacının verdiği talimatları esas al.
-
-  </div>
-
-
-
-  <footer>
-
-    Sağlığın önemli.
-    Bugün kendine iyi bak. 💜
+    Esila için tasarlanmıştır. 💗
 
   </footer>
-
-
-</div>
-
-
-
-<!-- BİLDİRİM -->
-
-<div
-  class="notification"
-  id="notification"
->
-
-
-  <div
-    class="notification-title"
-    id="notificationTitle"
-  >
-    🔔 İlaç zamanı!
-  </div>
-
-
-  <div
-    class="notification-text"
-    id="notificationText"
-  >
-    İlacını almayı unutma.
-  </div>
-
-
-  <button
-    class="notification-close"
-    onclick="closeNotification()"
-  >
-    Tamam
-  </button>
 
 
 </div>
@@ -1337,637 +1556,686 @@
 <script>
 
 
-  /* =====================================
-     TÜRKİYE TARİHİ VE CANLI SAAT
-     ===================================== */
+/* ==================================================
+   TARİH ANAHTARI
+   ================================================== */
 
+function getTurkeyDateKey() {
 
-  function updateTurkeyDateTime() {
+  const formatter =
+    new Intl.DateTimeFormat(
+      "en-CA",
+      {
+        timeZone:
+          "Europe/Istanbul",
 
+        year:
+          "numeric",
 
-    const now = new Date();
+        month:
+          "2-digit",
 
+        day:
+          "2-digit"
+      }
+    );
 
-    const time =
-      now.toLocaleTimeString(
-        "tr-TR",
-        {
-          timeZone:
-            "Europe/Istanbul",
-
-          hour: "2-digit",
-
-          minute: "2-digit",
-
-          second: "2-digit"
-        }
-      );
-
-
-    const date =
-      now.toLocaleDateString(
-        "tr-TR",
-        {
-          timeZone:
-            "Europe/Istanbul",
-
-          weekday: "long",
-
-          day: "numeric",
-
-          month: "long",
-
-          year: "numeric"
-        }
-      );
-
-
-    document.getElementById(
-      "liveTime"
-    ).textContent = time;
-
-
-    document.getElementById(
-      "liveDate"
-    ).textContent =
-      date.charAt(0).toUpperCase()
-      + date.slice(1);
-
-  }
-
-
-  updateTurkeyDateTime();
-
-
-  setInterval(
-    updateTurkeyDateTime,
-    1000
+  return formatter.format(
+    new Date()
   );
 
+}
 
 
-  /* =====================================
-     BUGÜNÜN TARİHİ
-     ===================================== */
+
+/* ==================================================
+   CANLI TÜRKİYE SAATİ
+   ================================================== */
+
+function updateClock() {
+
+  const now =
+    new Date();
 
 
-  const now = new Date();
-
-
-  const dateKey =
-
-    now.getFullYear()
-    + "-"
-    + String(
-        now.getMonth() + 1
-      ).padStart(2, "0")
-    + "-"
-    + String(
-        now.getDate()
-      ).padStart(2, "0");
-
-
-  document.getElementById(
-    "dateText"
-  ).textContent =
-
-    now.toLocaleDateString(
+  const time =
+    now.toLocaleTimeString(
       "tr-TR",
       {
-        day: "numeric",
-        month: "long",
-        weekday: "long"
+        timeZone:
+          "Europe/Istanbul",
+
+        hour:
+          "2-digit",
+
+        minute:
+          "2-digit",
+
+        second:
+          "2-digit",
+
+        hour12:
+          false
       }
     );
 
 
+  const date =
+    now.toLocaleDateString(
+      "tr-TR",
+      {
+        timeZone:
+          "Europe/Istanbul",
 
-  /* =====================================
-     BETASERC SAĞLIK DURUMU
-     ===================================== */
+        weekday:
+          "long",
 
+        day:
+          "numeric",
 
-  let health =
+        month:
+          "long",
 
-    localStorage.getItem(
-      "healthStatus"
-    ) || "good";
-
-
-  function updateHealthUI() {
-
-
-    const goodBtn =
-      document.getElementById(
-        "goodBtn"
-      );
-
-
-    const badBtn =
-      document.getElementById(
-        "badBtn"
-      );
-
-
-    const desc =
-      document.getElementById(
-        "betasercDesc"
-      );
-
-
-    const time =
-      document.getElementById(
-        "betasercTime"
-      );
-
-
-    if (health === "good") {
-
-
-      goodBtn.classList.add(
-        "active"
-      );
-
-
-      badBtn.classList.remove(
-        "active"
-      );
-
-
-      desc.textContent =
-        "İyiyken sabah 1 defa.";
-
-
-      time.textContent =
-        "⏰ 09:00";
-
-
-    } else {
-
-
-      goodBtn.classList.remove(
-        "active"
-      );
-
-
-      badBtn.classList.add(
-        "active"
-      );
-
-
-      desc.textContent =
-        "İyi değilken sabah ve akşam.";
-
-
-      time.textContent =
-        "⏰ 09:00 · 21:00";
-
-    }
-
-  }
-
-
-  function setHealth(status) {
-
-
-    health = status;
-
-
-    localStorage.setItem(
-      "healthStatus",
-      status
+        year:
+          "numeric"
+      }
     );
 
 
-    updateHealthUI();
+  document.getElementById(
+    "liveClock"
+  ).textContent =
+    time;
+
+
+  document.getElementById(
+    "liveDate"
+  ).textContent =
+    date.charAt(0).toUpperCase()
+    + date.slice(1);
+
+
+  document.getElementById(
+    "todayLabel"
+  ).textContent =
+    date.charAt(0).toUpperCase()
+    + date.slice(1);
+
+}
+
+
+updateClock();
+
+
+setInterval(
+  updateClock,
+  1000
+);
+
+
+
+/* ==================================================
+   KAYIT ANAHTARLARI
+   ================================================== */
+
+function getStorageKey() {
+
+  return (
+    "esila_medicine_"
+    + getTurkeyDateKey()
+  );
+
+}
+
+
+function getTodayData() {
+
+  const key =
+    getStorageKey();
+
+
+  const saved =
+    localStorage.getItem(key);
+
+
+  if (!saved) {
+
+    return {
+      health: "good",
+      doses: {}
+    };
 
   }
+
+
+  try {
+
+    return JSON.parse(
+      saved
+    );
+
+  } catch {
+
+    return {
+      health: "good",
+      doses: {}
+    };
+
+  }
+
+}
+
+
+function saveTodayData(data) {
+
+  localStorage.setItem(
+
+    getStorageKey(),
+
+    JSON.stringify(data)
+
+  );
+
+}
+
+
+
+/* ==================================================
+   SAĞLIK DURUMU
+   ================================================== */
+
+let todayData =
+  getTodayData();
+
+
+function setHealth(status) {
+
+
+  todayData.health =
+    status;
+
+
+  saveTodayData(
+    todayData
+  );
 
 
   updateHealthUI();
 
+  updateBetasercUI();
 
+  updateProgress();
 
-  /* =====================================
-     İLAÇ TAKİBİ
-     ===================================== */
-
-
-  function getTaken() {
-
-
-    const saved =
-
-      localStorage.getItem(
-        "taken_" + dateKey
-      );
-
-
-    return saved
-      ? JSON.parse(saved)
-      : {};
-
-  }
+}
 
 
 
-  function saveTaken(data) {
+function updateHealthUI() {
 
 
-    localStorage.setItem(
-
-      "taken_" + dateKey,
-
-      JSON.stringify(data)
-
-    );
-
-  }
-
-
-
-  function takeMedicine(
-    name,
-    button
-  ) {
-
-
-    const taken =
-      getTaken();
-
-
-    taken[name] =
-      !taken[name];
-
-
-    saveTaken(
-      taken
+  const good =
+    document.getElementById(
+      "goodButton"
     );
 
 
-    if (taken[name]) {
-
-
-      button.textContent =
-        "✓ Alındı";
-
-
-      button.classList.add(
-        "done"
-      );
-
-
-    } else {
-
-
-      button.textContent =
-        "Aldım";
-
-
-      button.classList.remove(
-        "done"
-      );
-
-    }
-
-
-    updateProgress();
-
-  }
-
-
-
-  /* =====================================
-     İLERLEME
-     ===================================== */
-
-
-  function updateProgress() {
-
-
-    const taken =
-      getTaken();
-
-
-    const total = 3;
-
-
-    let count = 0;
-
-
-    if (taken.betaserc)
-      count++;
-
-
-    if (taken.citoles)
-      count++;
-
-
-    if (taken.b12)
-      count++;
-
-
-    const percent =
-      (count / total) * 100;
-
-
+  const bad =
     document.getElementById(
-      "progressText"
-    ).textContent =
-
-      count +
-      " / " +
-      total;
-
-
-    document.getElementById(
-      "progressBar"
-    ).style.width =
-
-      percent + "%";
-
-  }
-
-
-
-  function loadProgress() {
-
-
-    const taken =
-      getTaken();
-
-
-    const buttons =
-      document.querySelectorAll(
-        ".take-btn"
-      );
-
-
-    const names = [
-      "betaserc",
-      "citoles",
-      "b12"
-    ];
-
-
-    buttons.forEach(
-      (button, index) => {
-
-
-        if (
-          taken[names[index]]
-        ) {
-
-
-          button.textContent =
-            "✓ Alındı";
-
-
-          button.classList.add(
-            "done"
-          );
-
-        }
-
-      }
+      "badButton"
     );
 
 
-    updateProgress();
-
-  }
-
-
-  loadProgress();
-
-
-
-  /* =====================================
-     BİLDİRİM
-     ===================================== */
-
-
-  function showNotification(
-    title,
-    text
-  ) {
-
-
-    document.getElementById(
-      "notificationTitle"
-    ).textContent = title;
-
-
-    document.getElementById(
-      "notificationText"
-    ).textContent = text;
-
-
-    document.getElementById(
-      "notification"
-    ).classList.add(
-      "show"
-    );
-
-
-    if (
-      "Notification" in window &&
-      Notification.permission ===
-      "granted"
-    ) {
-
-
-      new Notification(
-        title,
-        {
-          body: text
-        }
-      );
-
-    }
-
-  }
-
-
-
-  function closeNotification() {
-
-
-    document.getElementById(
-      "notification"
-    ).classList.remove(
-      "show"
-    );
-
-  }
-
-
-
-  /* =====================================
-     BİLDİRİM İZNİ
-     ===================================== */
-
-
-  if (
-    "Notification" in window &&
-    Notification.permission ===
-    "default"
-  ) {
-
-
-    Notification.requestPermission();
-
-  }
-
-
-
-  /* =====================================
-     İLAÇ SAATLERİ
-     ===================================== */
-
-
-  let lastNotification =
-    "";
-
-
-  function checkTime() {
-
-
-    const currentDate =
-      new Date();
-
-
-    const hour =
-      String(
-        currentDate.getHours()
-      ).padStart(2, "0");
-
-
-    const minute =
-      String(
-        currentDate.getMinutes()
-      ).padStart(2, "0");
-
-
-    const current =
-      hour + ":" + minute;
-
-
-
-    /* SABAH */
-
-    if (
-      current === "09:00" &&
-      lastNotification !==
-      "09:00"
-    ) {
-
-
-      showNotification(
-
-        "🌅 Günaydın!",
-
-        "Sabah ilaçlarını almayı unutma. Doktorunun verdiği talimatları takip et."
-
-      );
-
-
-      lastNotification =
-        "09:00";
-
-    }
-
-
-
-    /* AKŞAM BETASERC */
-
-    if (
-      current === "21:00" &&
-      health === "bad" &&
-      lastNotification !==
-      "21:00"
-    ) {
-
-
-      showNotification(
-
-        "🌙 Betaserc zamanı!",
-
-        "Bugün kendini iyi hissetmediğini belirtmiştin. Doktorunun verdiği kullanım talimatını takip etmeyi unutma."
-
-      );
-
-
-      lastNotification =
-        "21:00";
-
-    }
-
-  }
-
-
-  setInterval(
-    checkTime,
-    30000
+  good.classList.toggle(
+    "active",
+    todayData.health === "good"
   );
 
 
+  bad.classList.toggle(
+    "active",
+    todayData.health === "bad"
+  );
 
-  /* =====================================
-     KOYU / AÇIK TEMA
-     ===================================== */
-
-
-  function toggleTheme() {
-
-
-    document.body.classList.toggle(
-      "dark"
-    );
+}
 
 
-    const dark =
-      document.body.classList.contains(
-        "dark"
-      );
+
+function updateBetasercUI() {
 
 
-    localStorage.setItem(
-      "darkMode",
-      dark
-    );
-
-
+  const evening =
     document.getElementById(
-      "themeBtn"
-    ).textContent =
+      "betasercEveningRow"
+    );
 
-      dark
-        ? "☀️"
-        : "🌙";
+
+  const description =
+    document.getElementById(
+      "betasercDescription"
+    );
+
+
+  if (
+    todayData.health === "bad"
+  ) {
+
+
+    evening.style.display =
+      "flex";
+
+
+    description.textContent =
+      "İyi değilsen sabah ve akşam kullan.";
+
+  } else {
+
+
+    evening.style.display =
+      "none";
+
+
+    description.textContent =
+      "İyiyken sabah kullan.";
 
   }
 
 
+  updateDoseButtons();
+
+}
+
+
+
+/* ==================================================
+   DOZ BUTONLARI
+   ================================================== */
+
+function toggleDose(doseName) {
+
 
   if (
-    localStorage.getItem(
-      "darkMode"
-    ) === "true"
+    todayData.doses[doseName]
   ) {
 
+    todayData.doses[doseName] =
+      false;
 
-    document.body.classList.add(
-      "dark"
+  } else {
+
+    todayData.doses[doseName] =
+      true;
+
+  }
+
+
+  saveTodayData(
+    todayData
+  );
+
+
+  updateDoseButtons();
+
+  updateProgress();
+
+}
+
+
+
+function updateDoseButtons() {
+
+
+  const morning =
+    document.getElementById(
+      "betasercMorning"
     );
 
 
+  const evening =
     document.getElementById(
-      "themeBtn"
+      "betasercEvening"
+    );
+
+
+  const morningDone =
+    Boolean(
+      todayData.doses
+        .betasercMorning
+    );
+
+
+  const eveningDone =
+    Boolean(
+      todayData.doses
+        .betasercEvening
+    );
+
+
+  morning.textContent =
+    morningDone
+      ? "✓ Alındı"
+      : "Aldım";
+
+
+  morning.classList.toggle(
+    "done",
+    morningDone
+  );
+
+
+  evening.textContent =
+    eveningDone
+      ? "✓ Alındı"
+      : "Aldım";
+
+
+  evening.classList.toggle(
+    "done",
+    eveningDone
+  );
+
+}
+
+
+
+/* ==================================================
+   CITOLES + B12
+   ================================================== */
+
+function toggleMedicine(name) {
+
+
+  todayData.doses[name] =
+    !todayData.doses[name];
+
+
+  saveTodayData(
+    todayData
+  );
+
+
+  updateMedicineButtons();
+
+  updateProgress();
+
+}
+
+
+
+function updateMedicineButtons() {
+
+
+  const citoles =
+    document.getElementById(
+      "citolesButton"
+    );
+
+
+  const b12 =
+    document.getElementById(
+      "b12Button"
+    );
+
+
+  const citolesDone =
+    Boolean(
+      todayData.doses.citoles
+    );
+
+
+  const b12Done =
+    Boolean(
+      todayData.doses.b12
+    );
+
+
+  citoles.textContent =
+    citolesDone
+      ? "✓ Alındı"
+      : "Aldım";
+
+
+  citoles.classList.toggle(
+    "done",
+    citolesDone
+  );
+
+
+  b12.textContent =
+    b12Done
+      ? "✓ Alındı"
+      : "Aldım";
+
+
+  b12.classList.toggle(
+    "done",
+    b12Done
+  );
+
+}
+
+
+
+/* ==================================================
+   İLERLEME SAYACI
+   ================================================== */
+
+function updateProgress() {
+
+
+  let total = 3;
+
+  let completed = 0;
+
+
+  if (
+    todayData.doses
+      .betasercMorning
+  ) {
+
+    completed++;
+
+  }
+
+
+  if (
+    todayData.doses
+      .citoles
+  ) {
+
+    completed++;
+
+  }
+
+
+  if (
+    todayData.doses
+      .b12
+  ) {
+
+    completed++;
+
+  }
+
+
+  if (
+    todayData.health ===
+    "bad"
+  ) {
+
+    total = 4;
+
+
+    if (
+      todayData.doses
+        .betasercEvening
+    ) {
+
+      completed++;
+
+    }
+
+  }
+
+
+  const percentage =
+    Math.min(
+      100,
+      (completed / total) * 100
+    );
+
+
+  document.getElementById(
+    "progressText"
+  ).textContent =
+
+    completed
+    + " / "
+    + total;
+
+
+  document.getElementById(
+    "progressBar"
+  ).style.width =
+
+    percentage
+    + "%";
+
+
+  const success =
+    document.getElementById(
+      "successMessage"
+    );
+
+
+  success.classList.toggle(
+    "show",
+    completed === total
+  );
+
+}
+
+
+
+/* ==================================================
+   VERİLERİ YÜKLE
+   ================================================== */
+
+function loadToday() {
+
+
+  todayData =
+    getTodayData();
+
+
+  updateHealthUI();
+
+  updateBetasercUI();
+
+  updateMedicineButtons();
+
+  updateProgress();
+
+}
+
+
+loadToday();
+
+
+
+/* ==================================================
+   TEMA
+   ================================================== */
+
+function toggleTheme() {
+
+
+  const isDark =
+    document.body
+      .classList
+      .toggle("dark");
+
+
+  localStorage.setItem(
+    "esila_theme",
+    isDark
+      ? "dark"
+      : "light"
+  );
+
+
+  document.getElementById(
+    "themeButton"
+  ).textContent =
+    isDark
+      ? "☀️"
+      : "🌙";
+
+}
+
+
+function loadTheme() {
+
+
+  const theme =
+    localStorage.getItem(
+      "esila_theme"
+    );
+
+
+  if (
+    theme === "dark"
+  ) {
+
+    document.body
+      .classList
+      .add("dark");
+
+
+    document.getElementById(
+      "themeButton"
     ).textContent =
       "☀️";
 
   }
+
+}
+
+
+loadTheme();
+
+
+
+/* ==================================================
+   YENİ GÜN KONTROLÜ
+   ================================================== */
+
+let currentDateKey =
+  getTurkeyDateKey();
+
+
+setInterval(
+  () => {
+
+    const newDateKey =
+      getTurkeyDateKey();
+
+
+    if (
+      newDateKey !==
+      currentDateKey
+    ) {
+
+      currentDateKey =
+        newDateKey;
+
+
+      loadToday();
+
+    }
+
+  },
+  30000
+);
 
 
 </script>

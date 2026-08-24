@@ -2,37 +2,30 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, viewport-fit=cover"
-  >
-
-  <meta name="theme-color" content="#f7b7c7">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#171317">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta
-    name="apple-mobile-web-app-status-bar-style"
-    content="default"
-  >
 
-  <title>Esila bacım içindir</title>
+  <title>Eşşek</title>
 
   <style>
     :root {
-      --bg: #fff9fb;
-      --card: rgba(255,255,255,.95);
-      --text: #49333b;
-      --muted: #997983;
+      --bg: #171317;
+      --card: rgba(39, 29, 35, 0.94);
+      --card2: #30242a;
 
-      --pink: #e7a0b1;
-      --pink-dark: #d9859b;
-      --pink-light: #fde9ee;
+      --text: #fff1f5;
+      --muted: #bda8b0;
 
-      --green: #72b995;
-      --green-light: #e6f5ed;
+      --pink: #dc91a8;
+      --pink-dark: #eea9bd;
+      --pink-light: rgba(220, 145, 168, .15);
 
-      --border: rgba(200,120,145,.13);
-      --shadow: 0 8px 25px rgba(180,100,125,.08);
+      --green: #72b997;
+      --green-dark: #98d2b3;
+
+      --border: rgba(255,255,255,.07);
+      --shadow: 0 10px 30px rgba(0,0,0,.22);
     }
 
     * {
@@ -41,7 +34,6 @@
     }
 
     html {
-      min-height: 100%;
       background: var(--bg);
     }
 
@@ -49,6 +41,16 @@
       margin: 0;
       min-height: 100vh;
       min-height: 100svh;
+
+      background:
+        radial-gradient(
+          circle at 50% -10%,
+          rgba(220,145,168,.13),
+          transparent 42%
+        ),
+        var(--bg);
+
+      color: var(--text);
 
       font-family:
         -apple-system,
@@ -60,49 +62,22 @@
         Arial,
         sans-serif;
 
-      color: var(--text);
-
-      background:
-        radial-gradient(
-          circle at 0% 0%,
-          rgba(247,183,199,.22),
-          transparent 35%
-        ),
-        var(--bg);
-
       overflow-x: hidden;
     }
 
     button {
       font: inherit;
       touch-action: manipulation;
-      -webkit-appearance: none;
-      appearance: none;
     }
 
-    .app {
-      position: relative;
-      z-index: 2;
-
-      width: 100%;
-      max-width: 650px;
-
-      margin: 0 auto;
-
-      padding:
-        max(13px, env(safe-area-inset-top))
-        15px
-        max(28px, env(safe-area-inset-bottom));
-    }
-
-    /* YILDIZLAR */
+    /* =========================
+       KAYAN YILDIZLAR
+    ========================= */
 
     .stars {
       position: fixed;
       inset: 0;
-
       z-index: 0;
-
       overflow: hidden;
       pointer-events: none;
     }
@@ -110,234 +85,260 @@
     .star {
       position: absolute;
 
-      width: 4px;
-      height: 4px;
+      width: 3px;
+      height: 3px;
 
       border-radius: 50%;
 
-      background: #efb5c4;
+      background: #f1b9c8;
 
-      opacity: .45;
+      opacity: .4;
 
       box-shadow:
-        0 0 7px rgba(239,181,196,.55);
+        0 0 7px rgba(241,185,200,.65);
 
       animation:
-        starFloat linear infinite,
-        starTwinkle ease-in-out infinite;
+        starMove var(--duration) linear infinite,
+        starBlink var(--blink) ease-in-out infinite;
     }
 
     .star:nth-child(1) {
-      left: 8%;
-      top: 16%;
-      animation-duration: 13s,2.5s;
-      animation-delay: -3s,-.5s;
+      left: 7%;
+      top: 15%;
+      --duration: 12s;
+      --blink: 2.5s;
+      --dx: 90px;
+      --dy: -45px;
     }
 
     .star:nth-child(2) {
-      left: 22%;
-      top: 48%;
-      width: 3px;
-      height: 3px;
-      animation-duration: 16s,3s;
-      animation-delay: -8s,-1s;
+      left: 18%;
+      top: 55%;
+      width: 2px;
+      height: 2px;
+      --duration: 16s;
+      --blink: 3s;
+      --dx: -80px;
+      --dy: -65px;
     }
 
     .star:nth-child(3) {
-      left: 37%;
-      top: 9%;
-      width: 5px;
-      height: 5px;
-      animation-duration: 18s,2.8s;
-      animation-delay: -4s,-.7s;
+      left: 31%;
+      top: 25%;
+      width: 4px;
+      height: 4px;
+      --duration: 18s;
+      --blink: 2.8s;
+      --dx: 75px;
+      --dy: 80px;
     }
 
     .star:nth-child(4) {
-      left: 51%;
-      top: 67%;
-      width: 3px;
-      height: 3px;
-      animation-duration: 14s,3.4s;
-      animation-delay: -10s,-1.5s;
+      left: 43%;
+      top: 78%;
+      width: 2px;
+      height: 2px;
+      --duration: 14s;
+      --blink: 3.4s;
+      --dx: -90px;
+      --dy: -40px;
     }
 
     .star:nth-child(5) {
-      left: 68%;
-      top: 28%;
+      left: 56%;
+      top: 12%;
       width: 4px;
       height: 4px;
-      animation-duration: 17s,2.7s;
-      animation-delay: -5s,-.3s;
+      --duration: 20s;
+      --blink: 2.7s;
+      --dx: 100px;
+      --dy: 55px;
     }
 
     .star:nth-child(6) {
-      left: 82%;
-      top: 58%;
-      width: 3px;
-      height: 3px;
-      animation-duration: 15s,3.2s;
-      animation-delay: -7s,-1.2s;
+      left: 68%;
+      top: 48%;
+      width: 2px;
+      height: 2px;
+      --duration: 13s;
+      --blink: 3.1s;
+      --dx: -70px;
+      --dy: 75px;
     }
 
     .star:nth-child(7) {
-      left: 92%;
-      top: 15%;
-      width: 5px;
-      height: 5px;
-      animation-duration: 19s,2.9s;
-      animation-delay: -11s,-.9s;
+      left: 79%;
+      top: 20%;
+      width: 4px;
+      height: 4px;
+      --duration: 17s;
+      --blink: 2.6s;
+      --dx: 65px;
+      --dy: -70px;
     }
 
     .star:nth-child(8) {
-      left: 13%;
-      top: 82%;
+      left: 91%;
+      top: 67%;
       width: 3px;
       height: 3px;
-      animation-duration: 12s,3.6s;
-      animation-delay: -6s,-2s;
+      --duration: 15s;
+      --blink: 3.3s;
+      --dx: -100px;
+      --dy: 45px;
     }
 
     .star:nth-child(9) {
-      left: 45%;
-      top: 88%;
-      width: 4px;
-      height: 4px;
-      animation-duration: 20s,2.6s;
-      animation-delay: -14s,-.2s;
+      left: 12%;
+      top: 86%;
+      width: 3px;
+      height: 3px;
+      --duration: 19s;
+      --blink: 2.9s;
+      --dx: 80px;
+      --dy: -85px;
     }
 
     .star:nth-child(10) {
-      left: 76%;
-      top: 84%;
-      width: 3px;
-      height: 3px;
-      animation-duration: 14s,3.1s;
-      animation-delay: -9s,-1.1s;
+      left: 48%;
+      top: 43%;
+      width: 2px;
+      height: 2px;
+      --duration: 11s;
+      --blink: 3.5s;
+      --dx: -60px;
+      --dy: 60px;
     }
 
     .star:nth-child(11) {
-      left: 58%;
-      top: 42%;
+      left: 73%;
+      top: 88%;
       width: 3px;
       height: 3px;
-      animation-duration: 18s,2.4s;
-      animation-delay: -13s,-.8s;
+      --duration: 21s;
+      --blink: 2.4s;
+      --dx: 90px;
+      --dy: -55px;
     }
 
     .star:nth-child(12) {
-      left: 29%;
-      top: 73%;
+      left: 36%;
+      top: 62%;
       width: 4px;
       height: 4px;
-      animation-duration: 16s,3.5s;
-      animation-delay: -2s,-1.7s;
+      --duration: 16s;
+      --blink: 3.2s;
+      --dx: -75px;
+      --dy: -75px;
     }
 
-    @keyframes starFloat {
+    @keyframes starMove {
       0% {
-        transform: translate3d(-10px,15px,0);
+        transform: translate3d(0,0,0);
       }
 
       50% {
-        transform: translate3d(15px,-20px,0);
+        transform:
+          translate3d(
+            var(--dx),
+            var(--dy),
+            0
+          );
       }
 
       100% {
-        transform: translate3d(-10px,15px,0);
+        transform: translate3d(0,0,0);
       }
     }
 
-    @keyframes starTwinkle {
-      0%,100% {
-        opacity: .2;
-        transform: scale(.75);
+    @keyframes starBlink {
+      0%, 100% {
+        opacity: .18;
       }
 
       50% {
-        opacity: .7;
-        transform: scale(1.15);
+        opacity: .75;
       }
     }
 
-    /* HEADER */
+    /* =========================
+       ANA KUTU
+    ========================= */
+
+    .app {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 620px;
+
+      margin: 0 auto;
+
+      padding:
+        max(15px, env(safe-area-inset-top))
+        15px
+        max(28px, env(safe-area-inset-bottom));
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
 
     .header {
       display: flex;
       align-items: center;
       justify-content: space-between;
 
-      padding: 7px 2px 16px;
+      padding: 6px 2px 16px;
     }
 
-    .hello-small {
-      color: var(--muted);
-
-      font-size: 11px;
-      font-weight: 650;
-
-      margin-bottom: 3px;
-    }
-
-    .hello-title {
+    .hello {
       margin: 0;
 
-      font-size: 23px;
-      line-height: 1.15;
+      font-size: 25px;
+      font-weight: 900;
 
-      font-weight: 850;
-      letter-spacing: -.4px;
+      letter-spacing: -.6px;
     }
 
-    .theme-btn {
-      width: 40px;
-      height: 40px;
-
-      display: grid;
-      place-items: center;
-
-      border: 1px solid var(--border);
-      border-radius: 13px;
-
-      background: var(--card);
-      color: var(--text);
-
-      box-shadow: var(--shadow);
-
-      cursor: pointer;
-    }
-
-    /* SAAT */
+    /* =========================
+       SAAT
+    ========================= */
 
     .clock-card {
-      text-align: center;
+      padding: 20px 14px;
 
-      padding: 19px 14px;
       margin-bottom: 14px;
 
+      text-align: center;
+
       border: 1px solid var(--border);
-      border-radius: 23px;
+      border-radius: 24px;
 
       background: var(--card);
+
       box-shadow: var(--shadow);
 
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
     .clock {
-      font-size: clamp(40px,13vw,61px);
+      font-size: clamp(43px, 14vw, 65px);
+
       line-height: 1;
 
-      font-weight: 850;
-      letter-spacing: .5px;
+      font-weight: 900;
 
       color: var(--pink-dark);
 
       font-variant-numeric: tabular-nums;
+
+      letter-spacing: .5px;
     }
 
     .date {
-      margin-top: 8px;
+      margin-top: 9px;
 
       font-size: 13px;
       font-weight: 750;
@@ -349,35 +350,37 @@
       color: var(--muted);
 
       font-size: 10px;
-      font-weight: 600;
     }
 
-    /* NASILSIN */
+    /* =========================
+       SAĞLIK
+    ========================= */
 
     .health-card {
-      padding: 17px;
+      padding: 16px;
+
       margin-bottom: 17px;
 
       border: 1px solid var(--border);
-      border-radius: 23px;
+      border-radius: 22px;
 
       background: var(--card);
-      box-shadow: var(--shadow);
 
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
     }
 
     .health-title {
       margin-bottom: 10px;
 
       font-size: 14px;
-      font-weight: 800;
+      font-weight: 850;
     }
 
     .health-buttons {
       display: grid;
+
       grid-template-columns: 1fr 1fr;
+
       gap: 9px;
     }
 
@@ -387,23 +390,26 @@
       border: 1px solid transparent;
       border-radius: 14px;
 
-      background: #fff4f7;
+      background: var(--card2);
       color: var(--text);
 
       cursor: pointer;
-
-      transition:
-        transform .15s ease,
-        background .2s ease;
     }
 
-    .health-btn:active {
-      transform: scale(.97);
+    .health-btn.active {
+      background: var(--pink-light);
+
+      border-color:
+        rgba(220,145,168,.28);
+
+      color: var(--pink-dark);
     }
 
     .health-label {
+      display: block;
+
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 850;
     }
 
     .health-sub {
@@ -414,32 +420,25 @@
       color: var(--muted);
 
       font-size: 9px;
-      font-weight: 600;
     }
 
-    .health-btn.active {
-      background: var(--pink-light);
-
-      border-color:
-        rgba(220,135,157,.25);
-
-      color: var(--pink-dark);
-    }
-
-    /* BAŞLIK */
+    /* =========================
+       BAŞLIK
+    ========================= */
 
     .section-head {
       display: flex;
-
+      align-items: center;
       justify-content: space-between;
-      align-items: end;
 
-      margin: 0 3px 10px;
+      margin:
+        0 3px
+        10px;
     }
 
     .section-title {
       font-size: 16px;
-      font-weight: 850;
+      font-weight: 900;
     }
 
     .section-date {
@@ -451,43 +450,63 @@
       text-align: right;
     }
 
-    /* İLAÇLAR */
+    /* =========================
+       İLAÇ KARTLARI
+    ========================= */
 
     .medicines {
       display: flex;
       flex-direction: column;
+
       gap: 10px;
     }
 
     .medicine {
       display: grid;
 
+      /*
+        SOL:
+        ikon
+
+        ORTA:
+        ilaç bilgisi
+
+        SAĞ:
+        buton
+
+        Böylece bütün kartların
+        buton kolonları birebir
+        aynı hizada kalıyor.
+      */
+
       grid-template-columns:
         44px
-        minmax(0,1fr)
-        78px;
+        minmax(0, 1fr)
+        82px;
 
       align-items: center;
 
       gap: 11px;
 
+      width: 100%;
+
       padding: 13px;
 
-      border: 1px solid var(--border);
+      border:
+        1px solid var(--border);
+
       border-radius: 19px;
 
       background: var(--card);
+
       box-shadow: var(--shadow);
 
       min-width: 0;
-
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
     }
 
     .medicine.done-card {
       border-color:
-        rgba(114,185,149,.28);
+        rgba(114,185,151,.25);
     }
 
     .med-icon {
@@ -503,15 +522,15 @@
     }
 
     .betaserc-icon {
-      background: var(--pink-light);
+      background: rgba(220,145,168,.14);
     }
 
     .citoles-icon {
-      background: #e9f6ef;
+      background: rgba(114,185,151,.13);
     }
 
     .b12-icon {
-      background: #fff0df;
+      background: rgba(242,173,105,.13);
     }
 
     .med-content {
@@ -522,7 +541,7 @@
       margin-bottom: 4px;
 
       font-size: 14px;
-      font-weight: 850;
+      font-weight: 900;
     }
 
     .med-desc {
@@ -530,11 +549,11 @@
 
       font-size: 10px;
       line-height: 1.4;
-
-      font-weight: 550;
     }
 
-    /* DOZLAR */
+    /* =========================
+       BETASERC DOZLARI
+    ========================= */
 
     .dose-list {
       display: flex;
@@ -548,35 +567,45 @@
     .dose {
       display: grid;
 
+      /*
+        Burada da sağdaki
+        buton kolonunu sabitliyoruz.
+      */
+
       grid-template-columns:
         minmax(0,1fr)
-        78px;
+        82px;
 
       align-items: center;
 
-      gap: 8px;
+      gap: 7px;
 
-      padding: 7px;
+      min-height: 42px;
 
-      border-radius: 10px;
+      padding: 5px 6px;
 
-      background: var(--pink-light);
+      border-radius: 11px;
+
+      background:
+        rgba(220,145,168,.09);
     }
 
     .dose-info {
-      min-width: 0;
+      padding-left: 3px;
 
       color: var(--muted);
 
       font-size: 9px;
-      font-weight: 750;
+      font-weight: 800;
     }
 
-    /* BUTONLAR */
+    /* =========================
+       ALINDI BUTONU
+    ========================= */
 
     .take {
-      width: 78px;
-      min-width: 78px;
+      width: 82px;
+      min-width: 82px;
       height: 36px;
 
       display: flex;
@@ -584,16 +613,16 @@
       justify-content: center;
 
       padding: 0;
-      margin: 0;
 
       border: 0;
       border-radius: 10px;
 
       background: var(--pink);
+
       color: white;
 
       font-size: 9.5px;
-      font-weight: 850;
+      font-weight: 900;
 
       white-space: nowrap;
 
@@ -612,26 +641,23 @@
       background: var(--green);
     }
 
-    .single-take {
-      justify-self: end;
-      align-self: center;
-    }
-
-    /* İLERLEME */
+    /* =========================
+       İLERLEME
+    ========================= */
 
     .progress-card {
       margin-top: 13px;
 
       padding: 15px;
 
-      border: 1px solid var(--border);
+      border:
+        1px solid var(--border);
+
       border-radius: 19px;
 
       background: var(--card);
-      box-shadow: var(--shadow);
 
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      box-shadow: var(--shadow);
     }
 
     .progress-head {
@@ -645,14 +671,14 @@
 
     .progress-title {
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 850;
     }
 
     .progress-count {
       color: var(--pink-dark);
 
       font-size: 11px;
-      font-weight: 850;
+      font-weight: 900;
     }
 
     .hearts-progress {
@@ -661,7 +687,7 @@
     }
 
     .progress-heart {
-      color: #e9b4c1;
+      color: #674b55;
       font-size: 19px;
     }
 
@@ -677,24 +703,29 @@
 
       border-radius: 12px;
 
+      background:
+        rgba(114,185,151,.12);
+
+      color: var(--green-dark);
+
       text-align: center;
 
-      color: #4d9a76;
-      background: var(--green-light);
-
       font-size: 11px;
-      font-weight: 800;
+      font-weight: 850;
     }
 
     .complete.show {
       display: block;
     }
 
-    /* SIFIRLA */
+    /* =========================
+       SIFIRLA
+    ========================= */
 
     .reset-area {
+      margin-top: 15px;
+
       text-align: center;
-      margin-top: 17px;
     }
 
     .reset-btn {
@@ -703,24 +734,20 @@
       padding: 6px 10px;
 
       background: transparent;
-      color: #b38d97;
+
+      color: #9d858d;
 
       font-size: 9px;
-      font-weight: 650;
 
       text-decoration: underline;
       text-underline-offset: 3px;
 
       cursor: pointer;
-
-      opacity: .75;
     }
 
-    .reset-btn:active {
-      opacity: 1;
-    }
-
-    /* KALP */
+    /* =========================
+       KALPLER
+    ========================= */
 
     .floating-heart {
       position: fixed;
@@ -741,7 +768,7 @@
 
         transform:
           translateY(8px)
-          scale(.55);
+          scale(.5);
       }
 
       15% {
@@ -761,7 +788,9 @@
       }
     }
 
-    /* TOAST */
+    /* =========================
+       TOAST
+    ========================= */
 
     .toast {
       position: fixed;
@@ -789,14 +818,12 @@
       border-radius: 14px;
 
       background:
-        rgba(70,43,53,.94);
+        rgba(255,240,245,.95);
 
-      color: white;
-
-      text-align: center;
+      color: #4b333c;
 
       font-size: 11px;
-      font-weight: 750;
+      font-weight: 800;
 
       opacity: 0;
 
@@ -814,40 +841,12 @@
         translate(-50%,0);
     }
 
-    /* DARK MODE */
+    /* =========================
+       ÇOK DAR IPHONE
+    ========================= */
 
-    body.dark {
-      --bg: #1e181b;
-      --card: #2b2227;
+    @media (max-width: 380px) {
 
-      --text: #fff0f4;
-      --muted: #bea7af;
-
-      --pink: #dc92a7;
-      --pink-dark: #d9879d;
-
-      --pink-light:
-        rgba(220,146,167,.14);
-
-      --border:
-        rgba(255,255,255,.06);
-
-      background: #1e181b;
-    }
-
-    body.dark .health-btn {
-      background: #34272d;
-      color: var(--text);
-    }
-
-    body.dark .health-btn.active {
-      background: var(--pink-light);
-      color: #f2afc0;
-    }
-
-    /* KÜÇÜK EKRAN */
-
-    @media (max-width:380px) {
       .app {
         padding-left: 11px;
         padding-right: 11px;
@@ -855,42 +854,33 @@
 
       .medicine {
         grid-template-columns:
-          41px
+          40px
           minmax(0,1fr)
-          74px;
+          76px;
 
         gap: 8px;
+
         padding: 11px;
       }
 
       .med-icon {
-        width: 41px;
-        height: 41px;
-        font-size: 17px;
+        width: 40px;
+        height: 40px;
       }
 
-      .med-name {
-        font-size: 13px;
-      }
-
-      .med-desc {
-        font-size: 9.5px;
+      .take {
+        width: 76px;
+        min-width: 76px;
       }
 
       .dose {
         grid-template-columns:
           minmax(0,1fr)
-          74px;
-      }
-
-      .take {
-        width: 74px;
-        min-width: 74px;
-        font-size: 9px;
+          76px;
       }
     }
 
-    @media (prefers-reduced-motion:reduce) {
+    @media (prefers-reduced-motion: reduce) {
       .star,
       .floating-heart {
         animation: none;
@@ -901,6 +891,7 @@
 
 <body>
 
+  <!-- KAYAN YILDIZLAR -->
   <div class="stars" aria-hidden="true">
     <span class="star"></span>
     <span class="star"></span>
@@ -918,30 +909,12 @@
 
   <main class="app">
 
+    <!-- BAŞLIK -->
     <header class="header">
-
-      <div>
-        <div class="hello-small">
-          Eşşek
-        </div>
-
-        <h1 class="hello-title">
-          Esila bacım içindir
-        </h1>
-      </div>
-
-      <button
-        class="theme-btn"
-        id="themeButton"
-        type="button"
-        onclick="toggleTheme()"
-        aria-label="Tema değiştir"
-      >
-        🌙
-      </button>
-
+      <h1 class="hello">Eşşek</h1>
     </header>
 
+    <!-- SAAT -->
     <section class="clock-card">
 
       <div
@@ -964,6 +937,7 @@
 
     </section>
 
+    <!-- NASILSIN -->
     <section class="health-card">
 
       <div class="health-title">
@@ -978,8 +952,6 @@
           type="button"
           onclick="setHealth('good')"
         >
-          <span class="health-emoji">😊</span>
-
           <span class="health-label">
             İyiyim
           </span>
@@ -995,8 +967,6 @@
           type="button"
           onclick="setHealth('bad')"
         >
-          <span class="health-emoji">🥺</span>
-
           <span class="health-label">
             İyi değilim
           </span>
@@ -1010,6 +980,7 @@
 
     </section>
 
+    <!-- İLAÇLAR -->
     <div class="section-head">
 
       <div class="section-title">
@@ -1025,6 +996,7 @@
 
     <section class="medicines">
 
+      <!-- BETASERC -->
       <article
         class="medicine"
         id="betasercCard"
@@ -1105,6 +1077,7 @@
 
       </article>
 
+      <!-- CITOLES -->
       <article
         class="medicine"
         id="citolesCard"
@@ -1127,7 +1100,7 @@
         </div>
 
         <button
-          class="take single-take"
+          class="take"
           id="citoles"
           type="button"
           onclick="
@@ -1142,6 +1115,7 @@
 
       </article>
 
+      <!-- B12 -->
       <article
         class="medicine"
         id="b12Card"
@@ -1164,7 +1138,7 @@
         </div>
 
         <button
-          class="take single-take"
+          class="take"
           id="b12"
           type="button"
           onclick="
@@ -1181,6 +1155,7 @@
 
     </section>
 
+    <!-- İLERLEME -->
     <section class="progress-card">
 
       <div class="progress-head">
@@ -1207,13 +1182,14 @@
         class="complete"
         id="complete"
       >
-        Bugünlük tamamdır Esila bacım.
+        Bugünlük tamamdır.
         <br>
         Aferin sana.
       </div>
 
     </section>
 
+    <!-- KÜÇÜK SIFIRLA -->
     <div class="reset-area">
 
       <button
@@ -1234,7 +1210,14 @@
   ></div>
 
   <script>
+    /*
+      TÜRKİYE TARİH ANAHTARI
+      Her gün 00:00 Türkiye saatinde
+      yeni kayıt alanı oluşur.
+    */
+
     function turkeyDateKey() {
+
       const parts =
         new Intl.DateTimeFormat(
           "en-CA",
@@ -1244,15 +1227,21 @@
             month: "2-digit",
             day: "2-digit"
           }
-        ).formatToParts(new Date());
+        ).formatToParts(
+          new Date()
+        );
 
       const values = {};
 
       parts.forEach(part => {
-        if (part.type !== "literal") {
+
+        if (
+          part.type !== "literal"
+        ) {
           values[part.type] =
             part.value;
         }
+
       });
 
       return (
@@ -1270,6 +1259,7 @@
     }
 
     function defaultData() {
+
       return {
         health: "good",
 
@@ -1283,6 +1273,7 @@
     }
 
     function getData() {
+
       const saved =
         localStorage.getItem(
           storageKey()
@@ -1293,10 +1284,12 @@
       }
 
       try {
+
         const parsed =
           JSON.parse(saved);
 
         return {
+
           health:
             parsed.health === "bad"
               ? "bad"
@@ -1306,23 +1299,32 @@
             ...defaultData().doses,
             ...(parsed.doses || {})
           }
+
         };
 
       } catch {
+
         return defaultData();
+
       }
     }
 
+    let data = getData();
+
     function saveData() {
+
       localStorage.setItem(
         storageKey(),
         JSON.stringify(data)
       );
     }
 
-    let data = getData();
+    /* =========================
+       SAAT
+    ========================= */
 
     function updateClock() {
+
       const now = new Date();
 
       const time =
@@ -1366,8 +1368,7 @@
 
       document
         .getElementById("sectionDate")
-        .textContent =
-        date;
+        .textContent = date;
     }
 
     updateClock();
@@ -1377,7 +1378,12 @@
       1000
     );
 
+    /* =========================
+       SAĞLIK DURUMU
+    ========================= */
+
     function setHealth(status) {
+
       data.health = status;
 
       saveData();
@@ -1388,6 +1394,7 @@
     }
 
     function updateHealth() {
+
       document
         .getElementById("goodBtn")
         .classList.toggle(
@@ -1404,6 +1411,7 @@
     }
 
     function updateBetaserc() {
+
       const evening =
         document.getElementById(
           "eveningDose"
@@ -1414,7 +1422,9 @@
           "betasercDesc"
         );
 
-      if (data.health === "bad") {
+      if (
+        data.health === "bad"
+      ) {
 
         evening.style.display =
           "grid";
@@ -1434,10 +1444,15 @@
       updateDoseButtons();
     }
 
+    /* =========================
+       BETASERC
+    ========================= */
+
     function toggleDose(
       name,
       button
     ) {
+
       const wasDone =
         data.doses[name];
 
@@ -1474,17 +1489,24 @@
         );
 
       document
-        .getElementById("betasercCard")
+        .getElementById(
+          "betasercCard"
+        )
         .classList.toggle(
           "done-card",
           complete
         );
     }
 
+    /* =========================
+       DİĞER İLAÇLAR
+    ========================= */
+
     function toggleMedicine(
       name,
       button
     ) {
+
       const wasDone =
         data.doses[name];
 
@@ -1514,14 +1536,18 @@
       );
 
       document
-        .getElementById("citolesCard")
+        .getElementById(
+          "citolesCard"
+        )
         .classList.toggle(
           "done-card",
           data.doses.citoles
         );
 
       document
-        .getElementById("b12Card")
+        .getElementById(
+          "b12Card"
+        )
         .classList.toggle(
           "done-card",
           data.doses.b12
@@ -1532,6 +1558,7 @@
       id,
       done
     ) {
+
       const button =
         document.getElementById(id);
 
@@ -1548,7 +1575,12 @@
           : "Aldım";
     }
 
+    /* =========================
+       KALP ANİMASYONU
+    ========================= */
+
     function createHearts(button) {
+
       const rect =
         button.getBoundingClientRect();
 
@@ -1560,7 +1592,11 @@
         "✨"
       ];
 
-      for (let i = 0; i < 8; i++) {
+      for (
+        let i = 0;
+        i < 8;
+        i++
+      ) {
 
         const heart =
           document.createElement(
@@ -1622,6 +1658,10 @@
       }
     }
 
+    /* =========================
+       İLERLEME
+    ========================= */
+
     function updateProgress() {
 
       const total =
@@ -1659,7 +1699,11 @@
 
       container.innerHTML = "";
 
-      for (let i = 0; i < total; i++) {
+      for (
+        let i = 0;
+        i < total;
+        i++
+      ) {
 
         const heart =
           document.createElement(
@@ -1704,51 +1748,9 @@
         );
     }
 
-    function toggleTheme() {
-
-      const dark =
-        document.body.classList.toggle(
-          "dark"
-        );
-
-      localStorage.setItem(
-        "esila_theme",
-        dark
-          ? "dark"
-          : "light"
-      );
-
-      document
-        .getElementById(
-          "themeButton"
-        )
-        .textContent =
-        dark
-          ? "☀️"
-          : "🌙";
-    }
-
-    function loadTheme() {
-
-      const theme =
-        localStorage.getItem(
-          "esila_theme"
-        );
-
-      if (theme === "dark") {
-
-        document.body
-          .classList
-          .add("dark");
-
-        document
-          .getElementById(
-            "themeButton"
-          )
-          .textContent =
-          "☀️";
-      }
-    }
+    /* =========================
+       SIFIRLAMA
+    ========================= */
 
     function resetToday() {
 
@@ -1774,6 +1776,10 @@
       );
     }
 
+    /* =========================
+       GÜN DEĞİŞİMİ
+    ========================= */
+
     let currentDay =
       turkeyDateKey();
 
@@ -1782,7 +1788,9 @@
       const newDay =
         turkeyDateKey();
 
-      if (newDay !== currentDay) {
+      if (
+        newDay !== currentDay
+      ) {
 
         currentDay = newDay;
 
@@ -1792,6 +1800,10 @@
       }
 
     }, 1000);
+
+    /* =========================
+       TOAST
+    ========================= */
 
     let toastTimer;
 
@@ -1823,7 +1835,12 @@
         }, 1800);
     }
 
+    /* =========================
+       BAŞLAT
+    ========================= */
+
     function refresh() {
+
       updateHealth();
       updateBetaserc();
       updateMedicineButtons();
@@ -1831,7 +1848,6 @@
       updateClock();
     }
 
-    loadTheme();
     refresh();
   </script>
 
